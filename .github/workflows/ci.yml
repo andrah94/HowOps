@@ -1,0 +1,19 @@
+name: Node CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        workspace: [backend, frontend, mobile]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+      - run: npm install -w ${{ matrix.workspace }}
+      - run: npm --workspace ${{ matrix.workspace }} run lint
+      - run: npm --workspace ${{ matrix.workspace }} run test --if-present
