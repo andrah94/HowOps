@@ -13,7 +13,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: npm
+          
       - run: npm install -w ${{ matrix.workspace }}
       - run: npm --workspace ${{ matrix.workspace }} run lint
       - run: npm --workspace ${{ matrix.workspace }} run test --if-present
