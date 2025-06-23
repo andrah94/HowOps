@@ -12,7 +12,11 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node
+              - name: Install Expo CLI (mobile only)
+      if: matrix.workspace == 'mobile'
+      run: npm install -g expo-cli
+-version: 18
           
       - run: npm install -w ${{ matrix.workspace }}
       - run: npm --workspace ${{ matrix.workspace }} run lint
