@@ -1,0 +1,9 @@
+{
+  "name": "howops-monorepo",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend",
+    "mobile"
+  ]
+}
