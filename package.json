@@ -3,6 +3,6 @@
   "private": true,
   "workspaces": [
     "backend",
-    "frontend",
+    "frontend"
   ]
 }
