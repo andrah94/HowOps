@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "SolopreneurWorkflow",
+    "slug": "solopreneur-workflow",
+    "version": "0.1.0",
+    "sdkVersion": "51.0.0",
+    "platforms": ["ios", "android"],
+    "orientation": "portrait",
+    "jsEngine": "hermes"
+  }
+}
