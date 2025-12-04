@@ -74,7 +74,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
     <style>
         :root {
             --black: #0f0f0f;
@@ -113,7 +113,7 @@
         }
 
         h1, h2, h3, .headline {
-            font-family: 'Fraunces', serif;
+            font-family: 'DM Serif Display', serif;
         }
 
         /* Navigation */
@@ -345,6 +345,37 @@
             font-size: 1.125rem;
             color: var(--gray-600);
             line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .who-examples {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            text-align: left;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .who-example {
+            background: var(--gray-100);
+            padding: 1.25rem 1.5rem;
+            border-radius: 10px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .who-example strong {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 0.25rem;
+        }
+
+        .who-example span {
+            font-size: 0.9375rem;
+            color: var(--gray-600);
+            line-height: 1.5;
         }
 
         /* Stats Section */
@@ -368,7 +399,7 @@
         }
 
         .stat-number {
-            font-family: 'Fraunces', serif;
+            font-family: 'DM Serif Display', serif;
             font-size: clamp(2.5rem, 4vw, 3.5rem);
             font-weight: 700;
             color: var(--accent);
@@ -580,6 +611,91 @@
             height: 6px;
             background: var(--accent);
             border-radius: 50%;
+        }
+
+        /* Examples Section */
+        .examples {
+            padding: 6rem 5%;
+            background: var(--white);
+        }
+
+        .examples-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .examples-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .examples-eyebrow {
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .examples-title {
+            font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+            font-weight: 600;
+            color: var(--black);
+        }
+
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .example-card {
+            background: var(--gray-100);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .example-header {
+            background: var(--black);
+            color: var(--white);
+            padding: 1.25rem 1.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .example-body {
+            padding: 1.5rem;
+        }
+
+        .example-before, .example-after {
+            padding: 1rem 0;
+        }
+
+        .example-before {
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .example-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .example-before .example-label {
+            color: var(--gray-500);
+        }
+
+        .example-after .example-label {
+            color: var(--accent);
+        }
+
+        .example-text {
+            font-size: 0.9375rem;
+            color: var(--gray-700);
+            line-height: 1.6;
         }
 
         /* About Section */
@@ -862,7 +978,15 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
+            .who-examples {
+                grid-template-columns: 1fr;
+            }
+
             .pain-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .example-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -973,7 +1097,25 @@
         <div class="for-who-container">
             <p class="for-who-eyebrow">This Is For You If</p>
             <h2 class="for-who-title">You've proven you can win clients. Now you need to prove you can handle them.</h2>
-            <p class="for-who-text">You're past the "will this work?" phase. Revenue is coming in. But your backend is a mess—sticky notes, scattered docs, things slipping through cracks. You know this won't scale. And deep down, you know it's already costing you.</p>
+            <p class="for-who-text">You're past the "will this work?" phase. Revenue is coming in. But your backend is a mess—sticky notes, scattered docs, things slipping through cracks. You know this won't scale.</p>
+            <div class="who-examples">
+                <div class="who-example">
+                    <strong>Coaches & Consultants</strong>
+                    <span>Spending 5+ hours/week on client onboarding, scheduling, and follow-ups instead of coaching</span>
+                </div>
+                <div class="who-example">
+                    <strong>Agency Owners</strong>
+                    <span>Juggling projects across Slack, email, and spreadsheets with no single source of truth</span>
+                </div>
+                <div class="who-example">
+                    <strong>Service Providers</strong>
+                    <span>Losing leads because your response time is 48 hours instead of 48 minutes</span>
+                </div>
+                <div class="who-example">
+                    <strong>Creative Freelancers</strong>
+                    <span>Doing the work you love, then drowning in invoices, contracts, and admin</span>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1094,6 +1236,70 @@
                         <li>Team training (when you're ready)</li>
                         <li>30-day support included</li>
                     </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Examples Section -->
+    <section class="examples">
+        <div class="examples-container">
+            <div class="examples-header">
+                <p class="examples-eyebrow">Real Results</p>
+                <h2 class="examples-title">What this actually looks like</h2>
+            </div>
+            <div class="example-grid">
+                <div class="example-card">
+                    <div class="example-header">Client Onboarding System</div>
+                    <div class="example-body">
+                        <div class="example-before">
+                            <p class="example-label">Before</p>
+                            <p class="example-text">5 hours per new client: manual welcome emails, scheduling calls, collecting intake forms, setting up folders, sending contracts. Things get missed. Clients wait.</p>
+                        </div>
+                        <div class="example-after">
+                            <p class="example-label">After</p>
+                            <p class="example-text">15 minutes: Automated welcome sequence, self-scheduling, digital intake, auto-generated folders, e-signed contracts. Client feels VIP. You do nothing.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="example-card">
+                    <div class="example-header">Lead Follow-Up Pipeline</div>
+                    <div class="example-body">
+                        <div class="example-before">
+                            <p class="example-label">Before</p>
+                            <p class="example-text">Leads sit in your inbox for days. You forget who you talked to. Follow-ups happen "when you remember." 40% of leads go cold.</p>
+                        </div>
+                        <div class="example-after">
+                            <p class="example-label">After</p>
+                            <p class="example-text">Every lead gets a response in under 2 hours. Automated nurture sequence. Zero leads fall through cracks. Conversion rate doubles.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="example-card">
+                    <div class="example-header">Project Delivery Workflow</div>
+                    <div class="example-body">
+                        <div class="example-before">
+                            <p class="example-label">Before</p>
+                            <p class="example-text">Projects live in 5 different apps. You're the only one who knows what's happening. Deadlines sneak up. Clients ask "what's the status?" constantly.</p>
+                        </div>
+                        <div class="example-after">
+                            <p class="example-label">After</p>
+                            <p class="example-text">One dashboard, real-time status. Automated client updates. Deadline alerts before they're urgent. Clients stop asking—they can see for themselves.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="example-card">
+                    <div class="example-header">Weekly Admin Cleanup</div>
+                    <div class="example-body">
+                        <div class="example-before">
+                            <p class="example-label">Before</p>
+                            <p class="example-text">Every Friday: invoicing, expense tracking, client updates, team check-ins, planning. 6+ hours of "business maintenance" that makes you hate Fridays.</p>
+                        </div>
+                        <div class="example-after">
+                            <p class="example-label">After</p>
+                            <p class="example-text">Invoices auto-send on project completion. Expenses auto-categorize. Updates auto-generate. Your Friday is 45 minutes of review, not 6 hours of scrambling.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
