@@ -77,8 +77,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --black: #1a1a1a;
-            --dark: #262626;
+            --black: #0f0f0f;
+            --dark: #1a1a1a;
             --gray-700: #404040;
             --gray-600: #525252;
             --gray-500: #6b7280;
@@ -88,6 +88,9 @@
             --gray-100: #f3f4f6;
             --cream: #fafaf9;
             --white: #ffffff;
+            --accent: #e85d04;
+            --accent-light: #ff7b29;
+            --accent-dark: #c44d00;
             --warm: #78716c;
         }
 
@@ -155,16 +158,18 @@
         }
 
         .nav-cta {
-            background: var(--black);
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
             color: var(--white) !important;
             padding: 0.75rem 1.5rem;
-            border-radius: 6px;
+            border-radius: 50px;
             font-weight: 600;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(232, 93, 4, 0.3);
         }
 
         .nav-cta:hover {
-            background: var(--dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(232, 93, 4, 0.4);
         }
 
         /* Hero Section */
@@ -173,7 +178,20 @@
             display: flex;
             align-items: center;
             padding: 8rem 5% 6rem;
-            background: var(--cream);
+            background: linear-gradient(135deg, #fafaf9 0%, #fff7ed 50%, #fef3e2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(232, 93, 4, 0.08) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .hero-container {
@@ -184,6 +202,8 @@
             max-width: 1300px;
             margin: 0 auto;
             width: 100%;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-content {
@@ -191,12 +211,18 @@
         }
 
         .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             font-size: 0.875rem;
             font-weight: 600;
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            color: var(--warm);
+            color: var(--accent);
             margin-bottom: 1.25rem;
+            background: rgba(232, 93, 4, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
         }
 
         .hero-title {
@@ -206,6 +232,10 @@
             letter-spacing: -0.02em;
             margin-bottom: 1.5rem;
             color: var(--black);
+        }
+
+        .hero-title .highlight {
+            color: var(--accent);
         }
 
         .hero-description {
@@ -226,19 +256,20 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: var(--black);
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
             color: var(--white);
             padding: 1rem 1.75rem;
-            border-radius: 6px;
+            border-radius: 50px;
             font-size: 1rem;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(232, 93, 4, 0.3);
         }
 
         .btn-primary:hover {
-            background: var(--dark);
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(232, 93, 4, 0.4);
         }
 
         .btn-primary svg {
@@ -256,24 +287,36 @@
         }
 
         .btn-secondary:hover {
-            color: var(--black);
+            color: var(--accent);
         }
 
         .hero-image-container {
             position: relative;
         }
 
+        .hero-image-container::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            border-radius: 12px;
+            z-index: -1;
+        }
+
         .hero-image {
             width: 100%;
             max-width: 440px;
-            border-radius: 8px;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
         }
 
         /* For Who Section */
         .for-who {
             padding: 6rem 5%;
             background: var(--white);
-            border-bottom: 1px solid var(--gray-200);
         }
 
         .for-who-container {
@@ -287,7 +330,7 @@
             font-weight: 600;
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            color: var(--warm);
+            color: var(--accent);
             margin-bottom: 1rem;
         }
 
@@ -304,10 +347,47 @@
             line-height: 1.8;
         }
 
+        /* Stats Section */
+        .stats {
+            padding: 4rem 5%;
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .stats-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9375rem;
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+
         /* Pain Points Section */
         .pain-points {
             padding: 6rem 5%;
-            background: var(--gray-100);
+            background: var(--black);
+            color: var(--white);
+            position: relative;
         }
 
         .pain-container {
@@ -325,13 +405,14 @@
             font-weight: 600;
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            color: var(--warm);
+            color: var(--accent);
             margin-bottom: 1rem;
         }
 
         .pain-title {
             font-size: clamp(1.75rem, 3.5vw, 2.25rem);
             font-weight: 600;
+            color: var(--white);
         }
 
         .pain-grid {
@@ -341,10 +422,34 @@
         }
 
         .pain-card {
-            background: var(--white);
+            background: rgba(255, 255, 255, 0.05);
             padding: 2rem;
-            border-radius: 8px;
-            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .pain-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .pain-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .pain-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--white);
         }
 
         .pain-card h3 {
@@ -352,19 +457,20 @@
             font-size: 1.125rem;
             font-weight: 600;
             margin-bottom: 0.75rem;
+            color: var(--white);
         }
 
         .pain-card p {
             font-size: 1rem;
-            color: var(--gray-600);
+            color: var(--gray-400);
             line-height: 1.7;
         }
 
         /* Solution Section */
         .solution {
             padding: 6rem 5%;
-            background: var(--black);
-            color: var(--white);
+            background: linear-gradient(180deg, #fff7ed 0%, var(--white) 100%);
+            color: var(--black);
         }
 
         .solution-container {
@@ -382,7 +488,7 @@
             font-weight: 600;
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            color: var(--gray-400);
+            color: var(--accent);
             margin-bottom: 1rem;
         }
 
@@ -390,11 +496,12 @@
             font-size: clamp(1.75rem, 3.5vw, 2.5rem);
             font-weight: 600;
             margin-bottom: 1rem;
+            color: var(--black);
         }
 
         .solution-subtitle {
             font-size: 1.125rem;
-            color: var(--gray-400);
+            color: var(--gray-600);
             max-width: 600px;
             margin: 0 auto;
         }
@@ -406,21 +513,36 @@
         }
 
         .solution-card {
-            padding: 2rem;
-            border: 1px solid var(--gray-700);
-            border-radius: 8px;
-            transition: border-color 0.3s ease;
+            padding: 2.5rem 2rem;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
         }
 
         .solution-card:hover {
-            border-color: var(--gray-500);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(232, 93, 4, 0.15);
         }
 
         .solution-number {
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--gray-500);
-            margin-bottom: 1.5rem;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gray-100);
+            margin-bottom: 1rem;
+            line-height: 1;
         }
 
         .solution-card h3 {
@@ -428,11 +550,12 @@
             font-size: 1.25rem;
             font-weight: 600;
             margin-bottom: 0.75rem;
+            color: var(--black);
         }
 
         .solution-card p {
             font-size: 0.9375rem;
-            color: var(--gray-400);
+            color: var(--gray-600);
             line-height: 1.7;
             margin-bottom: 1.5rem;
         }
@@ -442,10 +565,21 @@
         }
 
         .solution-list li {
-            padding: 0.5rem 0;
+            padding: 0.625rem 0;
             font-size: 0.875rem;
-            color: var(--gray-500);
-            border-top: 1px solid var(--gray-700);
+            color: var(--gray-600);
+            border-top: 1px solid var(--gray-100);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .solution-list li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
         }
 
         /* About Section */
@@ -556,16 +690,18 @@
         }
 
         .step-number {
-            width: 48px;
-            height: 48px;
-            background: var(--gray-100);
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.25rem;
             font-weight: 700;
-            color: var(--gray-600);
+            font-size: 1.25rem;
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(232, 93, 4, 0.3);
         }
 
         .process-step h4 {
@@ -584,23 +720,43 @@
         /* CTA Section */
         .cta {
             padding: 8rem 5%;
-            background: var(--black);
+            background: linear-gradient(135deg, var(--black) 0%, #1f1f1f 50%, var(--dark) 100%);
             color: var(--white);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(232, 93, 4, 0.15) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .cta-container {
             max-width: 700px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .cta-eyebrow {
+            display: inline-block;
             font-size: 0.875rem;
             font-weight: 600;
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            color: var(--gray-500);
+            color: var(--accent);
             margin-bottom: 1.25rem;
+            background: rgba(232, 93, 4, 0.15);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
         }
 
         .cta h2 {
@@ -621,24 +777,25 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: var(--white);
-            color: var(--black);
-            padding: 1.125rem 2rem;
-            border-radius: 6px;
-            font-size: 1rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: var(--white);
+            padding: 1.25rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.125rem;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(232, 93, 4, 0.4);
         }
 
         .cta-btn:hover {
-            background: var(--gray-200);
-            transform: translateY(-1px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(232, 93, 4, 0.5);
         }
 
         .cta-email {
             display: block;
-            margin-top: 1.25rem;
+            margin-top: 1.5rem;
             color: var(--gray-500);
             font-size: 0.9375rem;
             text-decoration: none;
@@ -646,7 +803,7 @@
         }
 
         .cta-email:hover {
-            color: var(--white);
+            color: var(--accent);
         }
 
         /* Footer */
@@ -697,6 +854,14 @@
                 margin: 0 auto;
             }
 
+            .hero-image-container::before {
+                display: none;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
             .pain-grid {
                 grid-template-columns: 1fr;
             }
@@ -727,6 +892,15 @@
 
             .hero-cta-group {
                 flex-direction: column;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
             }
 
             .process-grid {
@@ -803,6 +977,28 @@
         </div>
     </section>
 
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Systems Deployed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Hours Saved Weekly</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">2x</div>
+                <div class="stat-label">Capacity Increase</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">30</div>
+                <div class="stat-label">Days to Transform</div>
+            </div>
+        </div>
+    </section>
+
     <!-- Pain Points Section -->
     <section class="pain-points">
         <div class="pain-container">
@@ -812,18 +1008,44 @@
             </div>
             <div class="pain-grid">
                 <div class="pain-card">
+                    <div class="pain-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="1" x2="12" y2="23"></line>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </div>
                     <h3>$10K+ per month in lost revenue</h3>
                     <p>Every lead that goes cold because you took too long. Every client you turned away because you're "at capacity." That's real money walking out the door.</p>
                 </div>
                 <div class="pain-card">
+                    <div class="pain-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                            <line x1="12" y1="9" x2="12" y2="13"></line>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                    </div>
                     <h3>Your reputation is on the line</h3>
                     <p>Missed deadlines. Delayed responses. "Sorry, that slipped through." Eventually, clients stop referring you. That's the beginning of the end.</p>
                 </div>
                 <div class="pain-card">
+                    <div class="pain-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <line x1="17" y1="11" x2="23" y2="11"></line>
+                        </svg>
+                    </div>
                     <h3>You can't hire because nothing is documented</h3>
                     <p>You want to bring on help but training someone would take longer than doing it yourself. So you stay stuck, doing everything, forever.</p>
                 </div>
                 <div class="pain-card">
+                    <div class="pain-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+                            <line x1="12" y1="2" x2="12" y2="12"></line>
+                        </svg>
+                    </div>
                     <h3>Burnout is coming—or it's already here</h3>
                     <p>Sunday anxiety. 11pm emails. Waking up thinking about work. This isn't sustainable, and you know it.</p>
                 </div>
