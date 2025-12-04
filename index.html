@@ -49,21 +49,21 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --white: #ffffff;
-            --off-white: #fafafa;
-            --light-gray: #f5f5f5;
-            --silver: #6b7280;
-            --silver-dark: #4b5563;
-            --charcoal: #1f2937;
-            --black: #111827;
+            --off-white: #f8f9fa;
+            --light-gray: #f1f3f4;
+            --silver: #5f6368;
+            --silver-dark: #3c4043;
+            --charcoal: #202124;
+            --black: #111111;
             --orange: #e85d04;
             --orange-light: #f48c06;
-            --orange-dark: #dc2f02;
-            --border: #e5e7eb;
+            --orange-dark: #d45a02;
+            --border: #dadce0;
         }
 
         * {
@@ -80,14 +80,15 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--white);
             color: var(--charcoal);
-            line-height: 1.7;
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3 {
-            font-family: 'DM Serif Display', Georgia, serif;
-            font-weight: 400;
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 600;
             color: var(--black);
+            line-height: 1.2;
         }
 
         /* Navigation */
@@ -97,20 +98,21 @@
             left: 0;
             right: 0;
             z-index: 100;
-            padding: 1.25rem 5%;
+            padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: var(--white);
             border-bottom: 1px solid var(--border);
         }
 
         .logo {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
             color: var(--black);
             text-decoration: none;
+            letter-spacing: -0.02em;
         }
 
         .logo span {
@@ -119,14 +121,15 @@
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             align-items: center;
         }
 
         .nav-links a {
             color: var(--silver-dark);
             text-decoration: none;
-            font-size: 0.9375rem;
+            font-size: 0.9rem;
+            font-weight: 500;
             transition: color 0.2s;
         }
 
@@ -135,406 +138,553 @@
         }
 
         .nav-cta {
-            background: var(--orange);
+            background: var(--black);
             color: var(--white) !important;
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
+            padding: 0.875rem 1.75rem;
             font-weight: 600;
             transition: all 0.2s;
         }
 
         .nav-cta:hover {
-            background: var(--orange-light);
-            transform: translateY(-1px);
+            background: var(--charcoal);
         }
 
-        /* Hero */
+        /* Hero - Split Screen */
         .hero {
             min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-top: 60px;
+        }
+
+        .hero-content {
             display: flex;
-            align-items: center;
-            padding: 8rem 5% 6rem;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 8%;
             background: var(--white);
         }
 
-        .hero-container {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 4rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            align-items: center;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            line-height: 1.1;
+        .hero-eyebrow {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--orange);
             margin-bottom: 1.5rem;
         }
 
-        .hero h1 span {
-            color: var(--orange);
+        .hero h1 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
         }
 
-        .hero-sub {
-            font-size: 1.25rem;
+        .hero h1 em {
+            color: var(--orange);
+            font-style: normal;
+        }
+
+        .hero-text {
+            font-size: 1.125rem;
             color: var(--silver);
-            margin-bottom: 2rem;
-            max-width: 540px;
+            margin-bottom: 2.5rem;
+            max-width: 480px;
+            line-height: 1.8;
         }
 
         .hero-cta {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
             background: var(--orange);
             color: var(--white);
-            padding: 1rem 2rem;
-            border-radius: 4px;
+            padding: 1.125rem 2rem;
             font-weight: 600;
+            font-size: 1rem;
             text-decoration: none;
             transition: all 0.2s;
         }
 
         .hero-cta:hover {
-            background: var(--orange-light);
-            transform: translateY(-2px);
+            background: var(--orange-dark);
+            gap: 1rem;
+        }
+
+        .hero-cta span {
+            transition: transform 0.2s;
+        }
+
+        .hero-image-wrap {
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
 
         .hero-image {
             width: 100%;
-            max-width: 400px;
-            border-radius: 8px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            object-fit: cover;
         }
 
-        /* Section Base */
-        section {
-            padding: 6rem 5%;
+        /* Authority Bar */
+        .authority {
+            background: var(--black);
+            color: var(--white);
+            padding: 3rem 5%;
         }
 
-        .section-label {
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
+        .authority-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .authority-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
             color: var(--orange);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
 
-        .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 1.5rem;
+        .authority-item p {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
-        /* The Problem */
-        .problem {
-            background: var(--off-white);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
+        /* Statement Section */
+        .statement {
+            padding: 8rem 5%;
+            text-align: center;
+            background: var(--white);
         }
 
-        .problem-container {
-            max-width: 800px;
+        .statement-inner {
+            max-width: 900px;
             margin: 0 auto;
         }
 
-        .problem p {
+        .statement h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .statement h2 em {
+            color: var(--orange);
+            font-style: normal;
+        }
+
+        .statement p {
             font-size: 1.25rem;
             color: var(--silver);
+            line-height: 1.9;
+        }
+
+        /* Problem Section - Asymmetric */
+        .problem {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            min-height: 600px;
+        }
+
+        .problem-left {
+            background: var(--off-white);
+            padding: 5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .problem-left h2 {
+            font-size: 2.5rem;
             margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .problem-left p {
+            color: var(--silver);
+            font-size: 1.0625rem;
             line-height: 1.8;
         }
 
-        .problem p strong {
+        .problem-right {
+            background: var(--white);
+            padding: 5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .problem-list {
+            list-style: none;
+        }
+
+        .problem-list li {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 1.125rem;
+            color: var(--charcoal);
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .problem-list li:last-child {
+            border-bottom: none;
+        }
+
+        .problem-list strong {
             color: var(--orange);
         }
 
-        /* Who I Work With */
-        .who {
-            background: var(--white);
+        .problem-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--border);
+            font-weight: 600;
+            min-width: 2rem;
         }
 
-        .who-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .who-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .who-card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            padding: 2rem;
-            border-radius: 8px;
-            transition: all 0.2s;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-        }
-
-        .who-card:hover {
-            border-color: var(--orange);
-            box-shadow: 0 4px 12px rgba(232, 93, 4, 0.1);
-        }
-
-        .who-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-            color: var(--black);
-        }
-
-        .who-card p {
-            color: var(--silver);
-            font-size: 0.9375rem;
-        }
-
-        /* What I Do */
+        /* Services - Editorial Layout */
         .services {
-            background: var(--off-white);
-            border-top: 1px solid var(--border);
+            padding: 8rem 5%;
+            background: var(--white);
         }
 
-        .services-container {
-            max-width: 1000px;
-            margin: 0 auto;
+        .services-header {
+            max-width: 600px;
+            margin-bottom: 5rem;
+        }
+
+        .services-header h2 {
+            font-size: clamp(2rem, 3.5vw, 2.75rem);
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .services-header p {
+            color: var(--silver);
+            font-size: 1.125rem;
         }
 
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 0;
+            border-top: 1px solid var(--black);
         }
 
-        .service-item {
-            text-align: center;
-            padding: 2rem;
+        .service-card {
+            padding: 3rem 2.5rem;
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s;
         }
 
-        .service-item h3 {
-            font-size: 1.375rem;
-            margin-bottom: 1rem;
-            color: var(--black);
+        .service-card:last-child {
+            border-right: none;
         }
 
-        .service-item p {
-            color: var(--silver);
-            font-size: 0.9375rem;
+        .service-card:hover {
+            background: var(--off-white);
         }
 
         .service-number {
-            display: inline-block;
-            width: 48px;
-            height: 48px;
-            background: var(--orange);
-            color: var(--white);
-            border-radius: 50%;
-            font-weight: 700;
-            font-size: 1.25rem;
-            line-height: 48px;
-            margin-bottom: 1.5rem;
-        }
-
-        /* The Data */
-        .data {
-            background: var(--white);
-            border-top: 1px solid var(--border);
-        }
-
-        .data-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .data-intro {
-            font-size: 1.125rem;
-            color: var(--silver);
-            max-width: 700px;
-            margin-bottom: 3rem;
-        }
-
-        .data-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-
-        .data-card {
-            background: var(--off-white);
-            border-left: 3px solid var(--orange);
-            padding: 2rem;
-        }
-
-        .data-stat {
-            font-family: 'DM Serif Display', serif;
+            font-family: 'Playfair Display', serif;
             font-size: 3rem;
             color: var(--orange);
-            margin-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1;
         }
 
-        .data-card h3 {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--black);
-            margin-bottom: 0.5rem;
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
         }
 
-        .data-card p {
+        .service-card p {
             color: var(--silver);
-            font-size: 0.875rem;
+            font-size: 0.9375rem;
+            line-height: 1.7;
         }
 
-        .data-source {
-            color: var(--silver);
+        /* Featured Result */
+        .result {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            min-height: 500px;
+            background: var(--black);
+        }
+
+        .result-content {
+            padding: 5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .result-eyebrow {
             font-size: 0.75rem;
-            margin-top: 0.5rem;
-            font-style: italic;
-        }
-
-        /* Testimonial */
-        .testimonial {
-            background: var(--off-white);
-            border-top: 1px solid var(--border);
-        }
-
-        .testimonial-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .testimonial-quote {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-            color: var(--charcoal);
-            line-height: 1.6;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--orange);
             margin-bottom: 2rem;
-            font-style: italic;
         }
 
-        .testimonial-author {
+        .result-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            color: var(--white);
+            line-height: 1.5;
+            margin-bottom: 2.5rem;
+        }
+
+        .result-author {
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 1rem;
         }
 
-        .testimonial-avatar {
-            width: 60px;
-            height: 60px;
+        .result-avatar {
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid var(--orange);
         }
 
-        .testimonial-info {
-            text-align: left;
-        }
-
-        .testimonial-name {
+        .result-info p {
+            color: var(--white);
             font-weight: 600;
-            color: var(--black);
+            margin-bottom: 0.25rem;
         }
 
-        .testimonial-role {
-            color: var(--silver);
+        .result-info span {
+            color: rgba(255,255,255,0.6);
             font-size: 0.875rem;
         }
 
-        /* About */
-        .about {
-            background: var(--white);
-            border-top: 1px solid var(--border);
+        .result-image {
+            position: relative;
+            overflow: hidden;
         }
 
-        .about-container {
-            display: grid;
-            grid-template-columns: 0.8fr 1.2fr;
-            gap: 4rem;
-            max-width: 1000px;
-            margin: 0 auto;
-            align-items: center;
-        }
-
-        .about-image {
+        .result-image img {
             width: 100%;
-            max-width: 350px;
-            border-radius: 8px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
         }
 
-        .about-content p {
+        .result-stat {
+            position: absolute;
+            bottom: 3rem;
+            left: 3rem;
+            background: var(--orange);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+        }
+
+        .result-stat h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--white);
+            line-height: 1;
+        }
+
+        .result-stat p {
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Data Points */
+        .data {
+            padding: 8rem 5%;
+            background: var(--off-white);
+        }
+
+        .data-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 5rem;
+        }
+
+        .data-header h2 {
+            font-size: clamp(2rem, 3.5vw, 2.75rem);
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .data-header p {
+            color: var(--silver);
+            font-size: 1.125rem;
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .data-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .data-card:hover {
+            border-color: var(--orange);
+            transform: translateY(-4px);
+        }
+
+        .data-stat {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--orange);
+            margin-bottom: 0.75rem;
+            line-height: 1;
+        }
+
+        .data-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .data-card p {
+            font-size: 0.8125rem;
+            color: var(--silver);
+            line-height: 1.6;
+        }
+
+        /* About - Founder Section */
+        .founder {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 600px;
+        }
+
+        .founder-image {
+            background: var(--light-gray);
+            position: relative;
+        }
+
+        .founder-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .founder-content {
+            padding: 5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: var(--white);
+        }
+
+        .founder-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 1.5rem;
+        }
+
+        .founder-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .founder-content p {
             color: var(--silver);
             font-size: 1.0625rem;
-            margin-bottom: 1rem;
             line-height: 1.8;
+            margin-bottom: 1rem;
         }
 
-        .about-credentials {
+        .founder-credentials {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.75rem;
             margin-top: 1.5rem;
         }
 
-        .credential {
+        .credential-tag {
             font-size: 0.8125rem;
+            font-weight: 500;
             color: var(--silver-dark);
             padding: 0.5rem 1rem;
             background: var(--off-white);
             border: 1px solid var(--border);
-            border-radius: 4px;
         }
 
-        /* Newsletter Inline */
-        .newsletter-inline {
-            background: var(--off-white);
+        /* Newsletter Strip */
+        .newsletter {
+            padding: 5rem 5%;
+            background: var(--white);
             border-top: 1px solid var(--border);
-            text-align: center;
+            border-bottom: 1px solid var(--border);
         }
 
-        .newsletter-inline-container {
-            max-width: 600px;
+        .newsletter-inner {
+            max-width: 800px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
         }
 
-        .newsletter-inline h2 {
-            font-size: 2rem;
+        .newsletter-content h3 {
+            font-size: 1.75rem;
             margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
         }
 
-        .newsletter-inline p {
+        .newsletter-content p {
             color: var(--silver);
-            margin-bottom: 2rem;
         }
 
         .newsletter-form {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.75rem;
         }
 
-        .form-row {
+        .newsletter-row {
             display: flex;
-            gap: 1rem;
+            gap: 0.75rem;
         }
 
         .newsletter-input {
             flex: 1;
-            padding: 1rem;
-            background: var(--white);
+            padding: 0.875rem 1rem;
             border: 1px solid var(--border);
-            border-radius: 4px;
-            color: var(--charcoal);
-            font-size: 1rem;
+            font-size: 0.9375rem;
             font-family: inherit;
-        }
-
-        .newsletter-input::placeholder {
-            color: var(--silver);
+            background: var(--white);
+            color: var(--charcoal);
         }
 
         .newsletter-input:focus {
@@ -542,88 +692,87 @@
             border-color: var(--orange);
         }
 
+        .newsletter-input::placeholder {
+            color: var(--silver);
+        }
+
         .newsletter-submit {
-            background: var(--orange);
+            background: var(--black);
             color: var(--white);
-            padding: 1rem 2rem;
+            padding: 0.875rem 1.5rem;
             border: none;
-            border-radius: 4px;
-            font-size: 1rem;
+            font-size: 0.9375rem;
             font-weight: 600;
             font-family: inherit;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: background 0.2s;
         }
 
         .newsletter-submit:hover {
-            background: var(--orange-light);
+            background: var(--charcoal);
         }
 
-        .newsletter-privacy {
-            font-size: 0.8125rem;
-            color: var(--silver);
-            margin-top: 1rem;
-        }
-
-        /* CTA */
-        .cta {
-            background: var(--white);
-            border-top: 1px solid var(--border);
+        /* Final CTA */
+        .final-cta {
+            padding: 10rem 5%;
+            background: var(--black);
             text-align: center;
         }
 
-        .cta-container {
-            max-width: 700px;
-            margin: 0 auto;
+        .final-cta h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
         }
 
-        .cta h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 1rem;
+        .final-cta p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.25rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .cta p {
-            color: var(--silver);
-            font-size: 1.125rem;
-            margin-bottom: 2rem;
-        }
-
-        .cta-btn {
-            display: inline-block;
+        .final-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
             background: var(--orange);
             color: var(--white);
             padding: 1.25rem 2.5rem;
-            border-radius: 4px;
             font-size: 1.125rem;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.2s;
         }
 
-        .cta-btn:hover {
+        .final-cta-btn:hover {
             background: var(--orange-light);
-            transform: translateY(-2px);
+            gap: 1rem;
         }
 
         /* Footer */
         footer {
             padding: 2rem 5%;
-            background: var(--off-white);
-            border-top: 1px solid var(--border);
+            background: var(--black);
+            border-top: 1px solid rgba(255,255,255,0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .footer-logo {
-            font-family: 'DM Serif Display', serif;
+            font-family: 'Playfair Display', serif;
             font-size: 1.25rem;
-            color: var(--black);
+            font-weight: 600;
+            color: var(--white);
             text-decoration: none;
         }
 
         footer p {
-            color: var(--silver);
+            color: rgba(255,255,255,0.5);
             font-size: 0.875rem;
         }
 
@@ -635,7 +784,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.7);
             z-index: 1000;
             align-items: center;
             justify-content: center;
@@ -647,13 +796,10 @@
 
         .popup {
             background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 12px;
             padding: 3rem;
-            max-width: 480px;
+            max-width: 440px;
             width: 90%;
             position: relative;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
         }
 
         .popup-close {
@@ -673,48 +819,40 @@
         }
 
         .popup h3 {
-            font-size: 1.75rem;
+            font-size: 1.5rem;
             margin-bottom: 0.75rem;
-            text-align: center;
         }
 
         .popup > p {
             color: var(--silver);
             margin-bottom: 1.5rem;
-            text-align: center;
+            font-size: 0.9375rem;
         }
 
         .popup .newsletter-form {
-            text-align: center;
-        }
-
-        .popup .newsletter-input {
             width: 100%;
         }
 
+        .popup .newsletter-input,
         .popup .newsletter-submit {
             width: 100%;
         }
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .hero-container,
-            .about-container {
+            .hero {
                 grid-template-columns: 1fr;
-                text-align: center;
             }
 
-            .hero-image,
-            .about-image {
-                margin: 0 auto;
-                order: -1;
+            .hero-image-wrap {
+                height: 400px;
             }
 
-            .hero-sub {
-                margin: 0 auto 2rem;
+            .authority-inner {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .who-grid {
+            .problem {
                 grid-template-columns: 1fr;
             }
 
@@ -722,8 +860,33 @@
                 grid-template-columns: 1fr;
             }
 
-            .data-grid {
+            .service-card {
+                border-right: none;
+            }
+
+            .result {
                 grid-template-columns: 1fr;
+            }
+
+            .result-image {
+                height: 400px;
+            }
+
+            .data-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .founder {
+                grid-template-columns: 1fr;
+            }
+
+            .founder-image {
+                height: 400px;
+            }
+
+            .newsletter-inner {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
         }
 
@@ -736,17 +899,30 @@
                 display: none;
             }
 
-            section {
-                padding: 4rem 5%;
+            .hero-content {
+                padding: 3rem 5%;
             }
 
-            .form-row {
-                flex-direction: column;
+            .authority-inner {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
             }
 
-            .testimonial-author {
+            .authority-item h4 {
+                font-size: 2rem;
+            }
+
+            .problem-left,
+            .problem-right {
+                padding: 3rem 5%;
+            }
+
+            .data-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-row {
                 flex-direction: column;
-                text-align: center;
             }
 
             footer {
@@ -768,172 +944,201 @@
         </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- Hero - Split Screen -->
     <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>You're great at what you do.<br><span>Your backend is holding you back.</span></h1>
-                <p class="hero-sub">You didn't start your business to spend nights on invoices, chase down leads, or wonder what's falling through the cracks. I help solopreneurs build operations that actually work.</p>
-                <a href="https://calendar.app.google/SnQB3ANFcue1HCEEA" target="_blank" class="hero-cta">Let's Talk</a>
-            </div>
-            <img src="https://static.wixstatic.com/media/5e8141_487cbeb5c7204034a4c5f39e37f8202b~mv2.jpg" alt="Andra Howard" class="hero-image">
+        <div class="hero-content">
+            <p class="hero-eyebrow">Operations Strategy</p>
+            <h1>You build the business.<br><em>I build the machine behind it.</em></h1>
+            <p class="hero-text">You're excellent at what you do. But the backend is eating you alive. I help solopreneurs and small teams build operational infrastructure that scales.</p>
+            <a href="https://calendar.app.google/SnQB3ANFcue1HCEEA" target="_blank" class="hero-cta">
+                Schedule a Consultation
+                <span>&rarr;</span>
+            </a>
+        </div>
+        <div class="hero-image-wrap">
+            <img src="https://static.wixstatic.com/media/5e8141_487cbeb5c7204034a4c5f39e37f8202b~mv2.jpg" alt="Andra Howard - Operations Strategist" class="hero-image">
         </div>
     </section>
 
-    <!-- The Problem -->
+    <!-- Authority Bar -->
+    <section class="authority">
+        <div class="authority-inner">
+            <div class="authority-item">
+                <h4>50+</h4>
+                <p>Systems Built</p>
+            </div>
+            <div class="authority-item">
+                <h4>10+</h4>
+                <p>Years Experience</p>
+            </div>
+            <div class="authority-item">
+                <h4>Federal</h4>
+                <p>Operations Background</p>
+            </div>
+            <div class="authority-item">
+                <h4>M.A.</h4>
+                <p>Organizational Comm.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statement -->
+    <section class="statement">
+        <div class="statement-inner">
+            <h2>Most businesses don't fail because of a bad product. They fail because <em>operations can't keep up with demand.</em></h2>
+            <p>Leads slip through cracks. Client onboarding takes forever. You're doing admin work at midnight instead of growing the business. It doesn't have to be this way.</p>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
     <section class="problem">
-        <div class="problem-container">
-            <p class="section-label">Sound Familiar?</p>
-            <p><strong>You're turning down clients</strong> because you're already maxed out. Not because you don't want the work—because you physically can't handle more.</p>
-            <p><strong>Your "system" is sticky notes and memory.</strong> You know things are slipping. You just don't have time to fix it.</p>
-            <p><strong>You're working 60-hour weeks</strong> and half of it isn't even the work you're good at. It's admin. Follow-ups. Putting out fires.</p>
-            <p>This isn't a you problem. It's an infrastructure problem. And it's fixable.</p>
+        <div class="problem-left">
+            <h2>The symptoms show up early.</h2>
+            <p>By the time most entrepreneurs realize they have an operations problem, they're already underwater. The good news: these patterns are predictable. And fixable.</p>
+        </div>
+        <div class="problem-right">
+            <ul class="problem-list">
+                <li>
+                    <span class="problem-number">01</span>
+                    <div><strong>You're turning down clients</strong> because you're already maxed out. Not because you don't want the work.</div>
+                </li>
+                <li>
+                    <span class="problem-number">02</span>
+                    <div><strong>Your "system" is sticky notes and memory.</strong> Things slip. You know it. You just don't have time to fix it.</div>
+                </li>
+                <li>
+                    <span class="problem-number">03</span>
+                    <div><strong>Half your week is admin.</strong> Follow-ups. Invoices. Putting out fires. Not the work you're actually good at.</div>
+                </li>
+                <li>
+                    <span class="problem-number">04</span>
+                    <div><strong>You can't hire because nothing is documented.</strong> How do you train someone when the process lives in your head?</div>
+                </li>
+            </ul>
         </div>
     </section>
 
-    <!-- Who I Work With -->
-    <section class="who">
-        <div class="who-container">
-            <p class="section-label">Who This Is For</p>
-            <h2 class="section-title">I work with people who are <em>good</em> at what they do—but drowning in everything else.</h2>
-            <div class="who-grid">
-                <div class="who-card">
-                    <h3>Coaches & Consultants</h3>
-                    <p>You're spending more time on client admin than actual coaching. Onboarding takes forever. Follow-ups get missed.</p>
-                </div>
-                <div class="who-card">
-                    <h3>Agency Owners</h3>
-                    <p>Projects live in 5 different tools. You're the bottleneck for everything. Hiring feels impossible because nothing is documented.</p>
-                </div>
-                <div class="who-card">
-                    <h3>Service Providers</h3>
-                    <p>Leads go cold because you can't respond fast enough. Clients ask "what's the status?" constantly because you don't have a system.</p>
-                </div>
-                <div class="who-card">
-                    <h3>Freelancers Ready to Scale</h3>
-                    <p>You've proven you can get clients. Now you need to prove you can handle them without working yourself into the ground.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- What I Do -->
+    <!-- Services -->
     <section class="services" id="services">
-        <div class="services-container">
-            <p class="section-label">What I Do</p>
-            <h2 class="section-title">Three ways I help you get your time back</h2>
-            <div class="services-grid">
-                <div class="service-item">
-                    <span class="service-number">1</span>
-                    <h3>Operations Consulting</h3>
-                    <p>We audit your current setup, find where time and money are leaking, and design systems that actually fit how you work.</p>
-                </div>
-                <div class="service-item">
-                    <span class="service-number">2</span>
-                    <h3>Leadership Coaching</h3>
-                    <p>Shift from doing everything yourself to leading a business. Build the mindset and skills to delegate, decide, and grow.</p>
-                </div>
-                <div class="service-item">
-                    <span class="service-number">3</span>
-                    <h3>Systems Implementation</h3>
-                    <p>I don't just give you a PDF. We build your SOPs, automations, and workflows together—and I stay until they're running.</p>
-                </div>
+        <div class="services-header">
+            <h2>How I Work</h2>
+            <p>Three distinct engagements designed to meet you where you are.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-number">01</div>
+                <h3>Operations Audit</h3>
+                <p>A deep dive into how your business actually runs. We identify where time and money are leaking, and build a roadmap to fix it. You get a complete operational assessment with prioritized recommendations.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-number">02</div>
+                <h3>Leadership Coaching</h3>
+                <p>Shift from doing everything yourself to leading a business. Build the mindset and decision-making frameworks to delegate, scale, and step into the CEO role your business needs.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-number">03</div>
+                <h3>Systems Implementation</h3>
+                <p>I don't hand you a PDF and wish you luck. We build your SOPs, automations, and workflows together. I stay until they're running and your team knows how to maintain them.</p>
             </div>
         </div>
     </section>
 
-    <!-- The Data -->
+    <!-- Featured Result -->
+    <section class="result">
+        <div class="result-content">
+            <p class="result-eyebrow">Client Results</p>
+            <p class="result-quote">"Working with HowOps transformed how I run my practice. Before, I was drowning in administrative tasks. Now my systems run themselves. I've doubled my client capacity without adding hours to my week."</p>
+            <div class="result-author">
+                <img src="https://static.wixstatic.com/media/2853e8_30a8c226eaa44f20b55ad1214803ccb5~mv2.png" alt="Glenn Windom II" class="result-avatar">
+                <div class="result-info">
+                    <p>Glenn Windom II</p>
+                    <span>Founder, WISE Financial Partners</span>
+                </div>
+            </div>
+        </div>
+        <div class="result-image">
+            <img src="https://static.wixstatic.com/media/2853e8_30a8c226eaa44f20b55ad1214803ccb5~mv2.png" alt="WISE Financial Partners">
+            <div class="result-stat">
+                <h4>2x</h4>
+                <p>Client Capacity</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Points -->
     <section class="data">
-        <div class="data-container">
-            <p class="section-label">Why This Matters</p>
-            <h2 class="section-title">The research is clear</h2>
-            <p class="data-intro">These aren't opinions. They're patterns I've seen play out across dozens of businesses—and the data backs it up.</p>
-            <div class="data-grid">
-                <div class="data-card">
-                    <div class="data-stat">82%</div>
-                    <h3>of small businesses fail due to cash flow problems</h3>
-                    <p>Late invoices, slow follow-ups, manual billing—these "small" operational gaps create cash flow crises.</p>
-                    <span class="data-source">U.S. Bank Study</span>
-                </div>
-                <div class="data-card">
-                    <div class="data-stat">78%</div>
-                    <h3>of leads choose the first business that responds</h3>
-                    <p>Speed isn't a nice-to-have. If you're taking 48 hours to respond, you're losing to someone who took 48 minutes.</p>
-                    <span class="data-source">Harvard Business Review</span>
-                </div>
-                <div class="data-card">
-                    <div class="data-stat">20-30%</div>
-                    <h3>of revenue lost to operational inefficiency</h3>
-                    <p>Rework, errors, duplicated effort—businesses without systems lose nearly a third of what they could be making.</p>
-                    <span class="data-source">IDC Research</span>
-                </div>
-                <div class="data-card">
-                    <div class="data-stat">96%</div>
-                    <h3>of businesses plateau without documented processes</h3>
-                    <p>Only 4% break past $1M without systems. The ceiling isn't talent—it's infrastructure.</p>
-                    <span class="data-source">E-Myth Research</span>
-                </div>
+        <div class="data-header">
+            <h2>The Numbers Don't Lie</h2>
+            <p>These aren't opinions. They're patterns backed by research.</p>
+        </div>
+        <div class="data-grid">
+            <div class="data-card">
+                <div class="data-stat">82%</div>
+                <h3>of businesses fail due to cash flow problems</h3>
+                <p>Most cash flow issues trace back to operational gaps: late invoices, slow follow-ups, manual processes.</p>
+            </div>
+            <div class="data-card">
+                <div class="data-stat">78%</div>
+                <h3>of leads choose the first responder</h3>
+                <p>Speed wins. If you're taking 48 hours to respond, you're losing to someone who took 48 minutes.</p>
+            </div>
+            <div class="data-card">
+                <div class="data-stat">30%</div>
+                <h3>of revenue lost to inefficiency</h3>
+                <p>Rework, errors, duplicated effort. Businesses without systems leave money on the table.</p>
+            </div>
+            <div class="data-card">
+                <div class="data-stat">96%</div>
+                <h3>plateau without documented processes</h3>
+                <p>Only 4% of businesses break past $1M without systems. The ceiling isn't talent. It's infrastructure.</p>
             </div>
         </div>
     </section>
 
-    <!-- Testimonial -->
-    <section class="testimonial">
-        <div class="testimonial-container">
-            <p class="section-label">Client Results</p>
-            <p class="testimonial-quote">"Working with HowOps transformed how I run my practice. Before, I was drowning in administrative tasks. Now my systems run themselves. I've doubled my client capacity without adding hours to my week."</p>
-            <div class="testimonial-author">
-                <img src="https://static.wixstatic.com/media/2853e8_30a8c226eaa44f20b55ad1214803ccb5~mv2.png" alt="Glenn Windom II" class="testimonial-avatar">
-                <div class="testimonial-info">
-                    <p class="testimonial-name">Glenn Windom II</p>
-                    <p class="testimonial-role">Founder, WISE Financial Partners</p>
-                </div>
+    <!-- Founder Section -->
+    <section class="founder" id="about">
+        <div class="founder-image">
+            <img src="https://static.wixstatic.com/media/5e8141_487cbeb5c7204034a4c5f39e37f8202b~mv2.jpg" alt="Andra Howard">
+        </div>
+        <div class="founder-content">
+            <p class="founder-eyebrow">About</p>
+            <h2>Andra Howard</h2>
+            <p>A decade building operations where failure wasn't an option. Defense contracting. Federal law enforcement. Nonprofit leadership. I've designed systems for environments where "it slipped through" meant real consequences.</p>
+            <p>Now I bring that same rigor to entrepreneurs who are tired of winging it. You don't need a Fortune 500 budget. You need someone who knows how to build infrastructure that works for a team of one.</p>
+            <div class="founder-credentials">
+                <span class="credential-tag">M.A. Organizational Communication</span>
+                <span class="credential-tag">Federal Operations Leadership</span>
+                <span class="credential-tag">50+ Systems Built</span>
             </div>
         </div>
     </section>
 
-    <!-- About -->
-    <section class="about" id="about">
-        <div class="about-container">
-            <img src="https://static.wixstatic.com/media/5e8141_487cbeb5c7204034a4c5f39e37f8202b~mv2.jpg" alt="Andra Howard" class="about-image">
-            <div class="about-content">
-                <p class="section-label">Who I Am</p>
-                <h2 class="section-title">Andra Howard</h2>
-                <p>A decade building operations where failure wasn't an option. Defense contracting. Federal law enforcement. Nonprofit leadership. I've designed systems for environments where "it slipped through" meant real consequences.</p>
-                <p>Now I bring that same rigor to entrepreneurs who are tired of winging it. You don't need a Fortune 500 budget. You need someone who knows how to build infrastructure that works—and can build it for a team of one.</p>
-                <div class="about-credentials">
-                    <span class="credential">M.A. Organizational Communication</span>
-                    <span class="credential">Federal Operations Leadership</span>
-                    <span class="credential">50+ Systems Built</span>
-                </div>
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="newsletter-inner">
+            <div class="newsletter-content">
+                <h3>Stay Sharp</h3>
+                <p>Weekly insights on operations, systems, and building a business that doesn't run you into the ground.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Newsletter Inline -->
-    <section class="newsletter-inline">
-        <div class="newsletter-inline-container">
-            <h2>Stay Connected</h2>
-            <p>Weekly insights on operations, systems, and building a business that doesn't run you into the ground.</p>
             <form class="newsletter-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdwbR1E91VEyMpF9suaXyPIXzULnN8Zzd5ByAX3I-rE1WpG3Q/formResponse" method="POST" target="_blank">
-                <div class="form-row">
+                <div class="newsletter-row">
                     <input type="text" name="entry.1826905416" class="newsletter-input" placeholder="First Name" required>
                     <input type="text" name="entry.527421799" class="newsletter-input" placeholder="Last Name" required>
                 </div>
                 <input type="email" name="entry.476323611" class="newsletter-input" placeholder="Email Address" required>
                 <button type="submit" class="newsletter-submit">Subscribe</button>
             </form>
-            <p class="newsletter-privacy">No spam. Unsubscribe anytime.</p>
         </div>
     </section>
 
-    <!-- CTA -->
-    <section class="cta">
-        <div class="cta-container">
-            <h2>Ready to stop drowning?</h2>
-            <p>30 minutes. No pitch deck. We'll talk about what's broken and whether I can help fix it.</p>
-            <a href="https://calendar.app.google/SnQB3ANFcue1HCEEA" target="_blank" class="cta-btn">Book a Free Call</a>
-        </div>
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <h2>Ready to build the machine?</h2>
+        <p>30 minutes. No pitch deck. We'll talk about what's broken and whether I can help fix it.</p>
+        <a href="https://calendar.app.google/SnQB3ANFcue1HCEEA" target="_blank" class="final-cta-btn">
+            Book a Free Consultation
+            <span>&rarr;</span>
+        </a>
     </section>
 
     <!-- Footer -->
@@ -947,9 +1152,9 @@
         <div class="popup">
             <button class="popup-close" onclick="closePopup()">&times;</button>
             <h3>Before you go...</h3>
-            <p>Get weekly insights on building systems that actually work. No fluff—just practical stuff you can use.</p>
+            <p>Get weekly insights on building systems that actually work. No fluff, just practical stuff.</p>
             <form class="newsletter-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdwbR1E91VEyMpF9suaXyPIXzULnN8Zzd5ByAX3I-rE1WpG3Q/formResponse" method="POST" target="_blank" onsubmit="closePopup()">
-                <div class="form-row">
+                <div class="newsletter-row">
                     <input type="text" name="entry.1826905416" class="newsletter-input" placeholder="First Name" required>
                     <input type="text" name="entry.527421799" class="newsletter-input" placeholder="Last Name" required>
                 </div>
@@ -960,7 +1165,6 @@
     </div>
 
     <script>
-        // Newsletter popup - shows after 20 seconds, only once per 7 days
         function showPopup() {
             const lastShown = localStorage.getItem('popupLastShown');
             const now = Date.now();
@@ -976,14 +1180,12 @@
             document.getElementById('newsletterPopup').classList.remove('active');
         }
 
-        // Close popup when clicking outside
         document.getElementById('newsletterPopup').addEventListener('click', function(e) {
             if (e.target === this) {
                 closePopup();
             }
         });
 
-        // Show popup after 20 seconds
         setTimeout(showPopup, 20000);
     </script>
 </body>
