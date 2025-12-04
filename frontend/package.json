@@ -16,6 +16,8 @@
     "stripe": "^14.0.0"
   },
   "devDependencies": {
+    "eslint": "^8.56.0",
+    "eslint-config-next": "14.2.3",
     "typescript": "^5.5.0"
   }
 }
