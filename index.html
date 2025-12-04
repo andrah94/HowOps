@@ -49,21 +49,21 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --white: #ffffff;
-            --off-white: #f8f9fa;
-            --light-gray: #f1f3f4;
-            --silver: #5f6368;
-            --silver-dark: #3c4043;
-            --charcoal: #202124;
-            --black: #111111;
-            --orange: #e85d04;
-            --orange-light: #f48c06;
-            --orange-dark: #d45a02;
-            --border: #dadce0;
+            --off-white: #fafafa;
+            --cream: #f7f5f3;
+            --silver: #71717a;
+            --silver-dark: #52525b;
+            --charcoal: #27272a;
+            --black: #18181b;
+            --orange: #ea580c;
+            --orange-light: #f97316;
+            --orange-dark: #c2410c;
+            --border: #e4e4e7;
         }
 
         * {
@@ -86,9 +86,9 @@
 
         h1, h2, h3, h4 {
             font-family: 'Playfair Display', Georgia, serif;
-            font-weight: 600;
+            font-weight: 500;
             color: var(--black);
-            line-height: 1.2;
+            line-height: 1.15;
         }
 
         /* Navigation */
@@ -98,21 +98,21 @@
             left: 0;
             right: 0;
             z-index: 100;
-            padding: 1rem 5%;
+            padding: 1.25rem 6%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: var(--white);
-            border-bottom: 1px solid var(--border);
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(12px);
         }
 
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 1.75rem;
-            font-weight: 700;
+            font-size: 1.5rem;
+            font-weight: 600;
             color: var(--black);
             text-decoration: none;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
         }
 
         .logo span {
@@ -121,15 +121,16 @@
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 3rem;
             align-items: center;
         }
 
         .nav-links a {
             color: var(--silver-dark);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.875rem;
             font-weight: 500;
+            letter-spacing: 0.01em;
             transition: color 0.2s;
         }
 
@@ -140,8 +141,9 @@
         .nav-cta {
             background: var(--black);
             color: var(--white) !important;
-            padding: 0.875rem 1.75rem;
-            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
             transition: all 0.2s;
         }
 
@@ -149,35 +151,48 @@
             background: var(--charcoal);
         }
 
-        /* Hero - Split Screen */
+        /* Hero */
         .hero {
             min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10rem 6% 6rem;
+            background: linear-gradient(180deg, var(--cream) 0%, var(--white) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-inner {
+            max-width: 1400px;
+            width: 100%;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            margin-top: 60px;
+            gap: 6rem;
+            align-items: center;
         }
 
         .hero-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 4rem 8%;
-            background: var(--white);
+            max-width: 560px;
         }
 
         .hero-eyebrow {
-            font-size: 0.8rem;
+            display: inline-block;
+            font-size: 0.75rem;
             font-weight: 600;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--orange);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            background: rgba(234, 88, 12, 0.08);
+            border-radius: 2px;
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 4vw, 3.5rem);
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
+            font-size: clamp(2.75rem, 5vw, 4rem);
+            margin-bottom: 2rem;
+            letter-spacing: -0.03em;
         }
 
         .hero h1 em {
@@ -187,54 +202,77 @@
 
         .hero-text {
             font-size: 1.125rem;
+            font-weight: 400;
             color: var(--silver);
-            margin-bottom: 2.5rem;
-            max-width: 480px;
+            margin-bottom: 3rem;
             line-height: 1.8;
         }
 
-        .hero-cta {
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-primary {
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
             background: var(--orange);
             color: var(--white);
-            padding: 1.125rem 2rem;
+            padding: 1rem 2rem;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.9375rem;
             text-decoration: none;
-            transition: all 0.2s;
+            letter-spacing: 0.01em;
+            transition: all 0.25s;
         }
 
-        .hero-cta:hover {
+        .btn-primary:hover {
             background: var(--orange-dark);
             gap: 1rem;
         }
 
-        .hero-cta span {
-            transition: transform 0.2s;
+        .btn-secondary {
+            color: var(--charcoal);
+            font-weight: 500;
+            font-size: 0.9375rem;
+            text-decoration: none;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--charcoal);
+            transition: all 0.2s;
         }
 
-        .hero-image-wrap {
-            background: var(--light-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .btn-secondary:hover {
+            color: var(--orange);
+            border-color: var(--orange);
+        }
+
+        .hero-visual {
             position: relative;
-            overflow: hidden;
         }
 
-        .hero-image {
+        .hero-image-main {
             width: 100%;
-            height: 100%;
+            height: 580px;
             object-fit: cover;
+        }
+
+        .hero-image-accent {
+            position: absolute;
+            bottom: -3rem;
+            left: -4rem;
+            width: 240px;
+            height: 320px;
+            object-fit: cover;
+            border: 8px solid var(--white);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.12);
         }
 
         /* Authority Bar */
         .authority {
             background: var(--black);
-            color: var(--white);
-            padding: 3rem 5%;
+            padding: 4rem 6%;
         }
 
         .authority-inner {
@@ -242,40 +280,52 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
+            gap: 3rem;
+        }
+
+        .authority-item {
             text-align: center;
+            padding: 1.5rem;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .authority-item:last-child {
+            border-right: none;
         }
 
         .authority-item h4 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: 2.75rem;
             color: var(--orange);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
         }
 
         .authority-item p {
-            font-size: 0.875rem;
-            color: rgba(255,255,255,0.7);
+            font-size: 0.8125rem;
+            color: rgba(255,255,255,0.6);
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
+            font-weight: 500;
         }
 
-        /* Statement Section */
+        /* Statement */
         .statement {
-            padding: 8rem 5%;
-            text-align: center;
+            padding: 10rem 6%;
             background: var(--white);
         }
 
         .statement-inner {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
+            text-align: center;
         }
 
         .statement h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(2.25rem, 4vw, 3.25rem);
             margin-bottom: 2rem;
             letter-spacing: -0.02em;
+            line-height: 1.25;
         }
 
         .statement h2 em {
@@ -287,55 +337,64 @@
             font-size: 1.25rem;
             color: var(--silver);
             line-height: 1.9;
+            max-width: 720px;
+            margin: 0 auto;
         }
 
-        /* Problem Section - Asymmetric */
+        /* Problem Section */
         .problem {
+            padding: 0;
             display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            min-height: 600px;
+            grid-template-columns: 1fr 1fr;
         }
 
-        .problem-left {
-            background: var(--off-white);
-            padding: 5rem;
+        .problem-image {
+            position: relative;
+            min-height: 700px;
+        }
+
+        .problem-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .problem-content {
+            background: var(--cream);
+            padding: 6rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
-        .problem-left h2 {
+        .problem-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 2rem;
+        }
+
+        .problem-content h2 {
             font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             letter-spacing: -0.02em;
-        }
-
-        .problem-left p {
-            color: var(--silver);
-            font-size: 1.0625rem;
-            line-height: 1.8;
-        }
-
-        .problem-right {
-            background: var(--white);
-            padding: 5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
 
         .problem-list {
             list-style: none;
+            margin-top: 2rem;
         }
 
         .problem-list li {
-            padding: 1.5rem 0;
-            border-bottom: 1px solid var(--border);
-            font-size: 1.125rem;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            font-size: 1.0625rem;
             color: var(--charcoal);
             display: flex;
-            gap: 1rem;
-            align-items: flex-start;
+            gap: 1.25rem;
+            align-items: baseline;
         }
 
         .problem-list li:last-child {
@@ -344,30 +403,40 @@
 
         .problem-list strong {
             color: var(--orange);
+            font-weight: 600;
         }
 
         .problem-number {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             color: var(--border);
-            font-weight: 600;
+            font-weight: 500;
             min-width: 2rem;
         }
 
-        /* Services - Editorial Layout */
+        /* Services */
         .services {
-            padding: 8rem 5%;
+            padding: 10rem 6%;
             background: var(--white);
         }
 
         .services-header {
-            max-width: 600px;
+            max-width: 560px;
             margin-bottom: 5rem;
+        }
+
+        .services-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 1.5rem;
         }
 
         .services-header h2 {
             font-size: clamp(2rem, 3.5vw, 2.75rem);
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
             letter-spacing: -0.02em;
         }
 
@@ -380,30 +449,51 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 0;
-            border-top: 1px solid var(--black);
         }
 
         .service-card {
-            padding: 3rem 2.5rem;
-            border-right: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
+            padding: 3.5rem 3rem;
+            border: 1px solid var(--border);
+            border-right: none;
             transition: all 0.3s;
+            position: relative;
         }
 
         .service-card:last-child {
-            border-right: none;
+            border-right: 1px solid var(--border);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--orange);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
         }
 
         .service-card:hover {
-            background: var(--off-white);
+            background: var(--cream);
         }
 
         .service-number {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            color: var(--orange);
-            margin-bottom: 1.5rem;
+            font-size: 4rem;
+            color: var(--border);
+            margin-bottom: 2rem;
             line-height: 1;
+            letter-spacing: -0.03em;
+        }
+
+        .service-card:hover .service-number {
+            color: var(--orange);
         }
 
         .service-card h3 {
@@ -415,48 +505,47 @@
         .service-card p {
             color: var(--silver);
             font-size: 0.9375rem;
-            line-height: 1.7;
+            line-height: 1.75;
         }
 
-        /* Featured Result */
-        .result {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            min-height: 500px;
+        /* Testimonial - Clean & Simple */
+        .testimonial {
+            padding: 8rem 6%;
             background: var(--black);
         }
 
-        .result-content {
-            padding: 5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        .testimonial-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
         }
 
-        .result-eyebrow {
+        .testimonial-eyebrow {
             font-size: 0.75rem;
             font-weight: 600;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--orange);
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
 
-        .result-quote {
+        .testimonial-quote {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
             color: var(--white);
             line-height: 1.5;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
+            font-style: italic;
         }
 
-        .result-author {
+        .testimonial-author {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            justify-content: center;
+            gap: 1.25rem;
         }
 
-        .result-avatar {
+        .testimonial-avatar {
             width: 56px;
             height: 56px;
             border-radius: 50%;
@@ -464,60 +553,62 @@
             border: 2px solid var(--orange);
         }
 
-        .result-info p {
+        .testimonial-info {
+            text-align: left;
+        }
+
+        .testimonial-info p {
             color: var(--white);
             font-weight: 600;
+            font-size: 1rem;
             margin-bottom: 0.25rem;
         }
 
-        .result-info span {
-            color: rgba(255,255,255,0.6);
+        .testimonial-info span {
+            color: rgba(255,255,255,0.5);
             font-size: 0.875rem;
         }
 
-        .result-image {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .result-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.9;
-        }
-
-        .result-stat {
-            position: absolute;
-            bottom: 3rem;
-            left: 3rem;
+        .testimonial-result {
+            display: inline-block;
+            margin-top: 3rem;
+            padding: 1rem 2rem;
             background: var(--orange);
             color: var(--white);
-            padding: 1.5rem 2rem;
         }
 
-        .result-stat h4 {
+        .testimonial-result strong {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: var(--white);
-            line-height: 1;
+            font-size: 1.75rem;
+            display: block;
+            margin-bottom: 0.25rem;
         }
 
-        .result-stat p {
-            font-size: 0.875rem;
-            margin-top: 0.25rem;
+        .testimonial-result span {
+            font-size: 0.8125rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
-        /* Data Points */
+        /* Data */
         .data {
-            padding: 8rem 5%;
-            background: var(--off-white);
+            padding: 10rem 6%;
+            background: var(--cream);
         }
 
         .data-header {
             text-align: center;
-            max-width: 700px;
+            max-width: 600px;
             margin: 0 auto 5rem;
+        }
+
+        .data-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 1.5rem;
         }
 
         .data-header h2 {
@@ -534,7 +625,7 @@
         .data-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
+            gap: 1.5rem;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -543,21 +634,21 @@
             background: var(--white);
             padding: 2.5rem 2rem;
             text-align: center;
-            border: 1px solid var(--border);
             transition: all 0.3s;
         }
 
         .data-card:hover {
-            border-color: var(--orange);
-            transform: translateY(-4px);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         }
 
         .data-stat {
             font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
             color: var(--orange);
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
             line-height: 1;
+            letter-spacing: -0.02em;
         }
 
         .data-card h3 {
@@ -575,16 +666,15 @@
             line-height: 1.6;
         }
 
-        /* About - Founder Section */
+        /* Founder */
         .founder {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            min-height: 600px;
         }
 
         .founder-image {
-            background: var(--light-gray);
             position: relative;
+            min-height: 700px;
         }
 
         .founder-image img {
@@ -594,7 +684,7 @@
         }
 
         .founder-content {
-            padding: 5rem;
+            padding: 6rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -607,63 +697,62 @@
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--orange);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .founder-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 3rem;
+            margin-bottom: 2rem;
             letter-spacing: -0.02em;
         }
 
-        .founder-content p {
+        .founder-content > p {
             color: var(--silver);
             font-size: 1.0625rem;
-            line-height: 1.8;
-            margin-bottom: 1rem;
+            line-height: 1.85;
+            margin-bottom: 1.25rem;
         }
 
         .founder-credentials {
             display: flex;
             flex-wrap: wrap;
             gap: 0.75rem;
-            margin-top: 1.5rem;
+            margin-top: 2rem;
         }
 
         .credential-tag {
             font-size: 0.8125rem;
             font-weight: 500;
             color: var(--silver-dark);
-            padding: 0.5rem 1rem;
-            background: var(--off-white);
+            padding: 0.625rem 1.25rem;
+            background: var(--cream);
             border: 1px solid var(--border);
         }
 
-        /* Newsletter Strip */
+        /* Newsletter */
         .newsletter {
-            padding: 5rem 5%;
-            background: var(--white);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
+            padding: 6rem 6%;
+            background: var(--cream);
         }
 
         .newsletter-inner {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1.2fr;
             gap: 4rem;
             align-items: center;
         }
 
         .newsletter-content h3 {
-            font-size: 1.75rem;
-            margin-bottom: 0.75rem;
-            letter-spacing: -0.01em;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
         }
 
         .newsletter-content p {
             color: var(--silver);
+            font-size: 1rem;
         }
 
         .newsletter-form {
@@ -679,7 +768,7 @@
 
         .newsletter-input {
             flex: 1;
-            padding: 0.875rem 1rem;
+            padding: 1rem 1.25rem;
             border: 1px solid var(--border);
             font-size: 0.9375rem;
             font-family: inherit;
@@ -699,7 +788,7 @@
         .newsletter-submit {
             background: var(--black);
             color: var(--white);
-            padding: 0.875rem 1.5rem;
+            padding: 1rem 1.75rem;
             border: none;
             font-size: 0.9375rem;
             font-weight: 600;
@@ -714,23 +803,35 @@
 
         /* Final CTA */
         .final-cta {
-            padding: 10rem 5%;
+            padding: 12rem 6%;
             background: var(--black);
             text-align: center;
+            position: relative;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 80px;
+            background: var(--orange);
         }
 
         .final-cta h2 {
             font-size: clamp(2.5rem, 5vw, 4rem);
             color: var(--white);
             margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
         }
 
         .final-cta p {
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.6);
             font-size: 1.25rem;
             margin-bottom: 3rem;
-            max-width: 600px;
+            max-width: 560px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -742,10 +843,11 @@
             background: var(--orange);
             color: var(--white);
             padding: 1.25rem 2.5rem;
-            font-size: 1.125rem;
+            font-size: 1.0625rem;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.2s;
+            letter-spacing: 0.01em;
+            transition: all 0.25s;
         }
 
         .final-cta-btn:hover {
@@ -755,9 +857,9 @@
 
         /* Footer */
         footer {
-            padding: 2rem 5%;
+            padding: 2.5rem 6%;
             background: var(--black);
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255,255,255,0.08);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -772,11 +874,11 @@
         }
 
         footer p {
-            color: rgba(255,255,255,0.5);
+            color: rgba(255,255,255,0.4);
             font-size: 0.875rem;
         }
 
-        /* Newsletter Popup */
+        /* Popup */
         .popup-overlay {
             display: none;
             position: fixed;
@@ -784,7 +886,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.75);
             z-index: 1000;
             align-items: center;
             justify-content: center;
@@ -796,16 +898,16 @@
 
         .popup {
             background: var(--white);
-            padding: 3rem;
-            max-width: 440px;
+            padding: 3.5rem;
+            max-width: 460px;
             width: 90%;
             position: relative;
         }
 
         .popup-close {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
+            top: 1.25rem;
+            right: 1.25rem;
             background: none;
             border: none;
             color: var(--silver);
@@ -819,14 +921,14 @@
         }
 
         .popup h3 {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             margin-bottom: 0.75rem;
         }
 
         .popup > p {
             color: var(--silver);
-            margin-bottom: 1.5rem;
-            font-size: 0.9375rem;
+            margin-bottom: 2rem;
+            font-size: 1rem;
         }
 
         .popup .newsletter-form {
@@ -840,20 +942,37 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .hero {
+            .hero-inner {
                 grid-template-columns: 1fr;
+                gap: 4rem;
             }
 
-            .hero-image-wrap {
+            .hero-visual {
+                order: -1;
+            }
+
+            .hero-image-main {
                 height: 400px;
+            }
+
+            .hero-image-accent {
+                display: none;
             }
 
             .authority-inner {
                 grid-template-columns: repeat(2, 1fr);
             }
 
+            .authority-item {
+                border-right: none;
+            }
+
             .problem {
                 grid-template-columns: 1fr;
+            }
+
+            .problem-image {
+                min-height: 400px;
             }
 
             .services-grid {
@@ -861,15 +980,12 @@
             }
 
             .service-card {
-                border-right: none;
+                border-right: 1px solid var(--border);
+                border-bottom: none;
             }
 
-            .result {
-                grid-template-columns: 1fr;
-            }
-
-            .result-image {
-                height: 400px;
+            .service-card:last-child {
+                border-bottom: 1px solid var(--border);
             }
 
             .data-grid {
@@ -881,12 +997,12 @@
             }
 
             .founder-image {
-                height: 400px;
+                min-height: 450px;
             }
 
             .newsletter-inner {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 2.5rem;
             }
         }
 
@@ -899,26 +1015,38 @@
                 display: none;
             }
 
-            .hero-content {
-                padding: 3rem 5%;
+            .hero {
+                padding: 8rem 5% 4rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: flex-start;
             }
 
             .authority-inner {
                 grid-template-columns: 1fr 1fr;
-                gap: 1.5rem;
+                gap: 2rem;
             }
 
             .authority-item h4 {
                 font-size: 2rem;
             }
 
-            .problem-left,
-            .problem-right {
-                padding: 3rem 5%;
+            .problem-content {
+                padding: 4rem 5%;
+            }
+
+            .services {
+                padding: 6rem 5%;
             }
 
             .data-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .founder-content {
+                padding: 4rem 5%;
             }
 
             .newsletter-row {
@@ -944,19 +1072,25 @@
         </div>
     </nav>
 
-    <!-- Hero - Split Screen -->
+    <!-- Hero -->
     <section class="hero">
-        <div class="hero-content">
-            <p class="hero-eyebrow">Operations Strategy</p>
-            <h1>You build the business.<br><em>I build the machine behind it.</em></h1>
-            <p class="hero-text">You're excellent at what you do. But the backend is eating you alive. I help solopreneurs and small teams build operational infrastructure that scales.</p>
-            <a href="https://calendar.app.google/SnQB3ANFcue1HCEEA" target="_blank" class="hero-cta">
-                Schedule a Consultation
-                <span>&rarr;</span>
-            </a>
-        </div>
-        <div class="hero-image-wrap">
-            <img src="https://static.wixstatic.com/media/5e8141_487cbeb5c7204034a4c5f39e37f8202b~mv2.jpg" alt="Andra Howard - Operations Strategist" class="hero-image">
+        <div class="hero-inner">
+            <div class="hero-content">
+                <span class="hero-eyebrow">Operations Strategy</span>
+                <h1>You build the business. <em>I build the machine behind it.</em></h1>
+                <p class="hero-text">You're excellent at what you do. But the backend is eating you alive. I help solopreneurs and small teams build operational infrastructure that scales.</p>
+                <div class="hero-actions">
+                    <a href="https://calendar.app.google/SnQB3ANFcue1HCEEA" target="_blank" class="btn-primary">
+                        Schedule a Consultation
+                        <span>&rarr;</span>
+                    </a>
+                    <a href="#services" class="btn-secondary">See how it works</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <img src="https://static.wixstatic.com/media/5e8141_4ba9394159b8444f95da44a7611e1cf9~mv2.jpg" alt="Business operations workspace" class="hero-image-main">
+                <img src="https://static.wixstatic.com/media/5e8141_2bce75e81d09461992987e5196c30137~mv2.jpg" alt="Strategy planning" class="hero-image-accent">
+            </div>
         </div>
     </section>
 
@@ -973,11 +1107,11 @@
             </div>
             <div class="authority-item">
                 <h4>Federal</h4>
-                <p>Operations Background</p>
+                <p>Ops Background</p>
             </div>
             <div class="authority-item">
                 <h4>M.A.</h4>
-                <p>Organizational Comm.</p>
+                <p>Org Communication</p>
             </div>
         </div>
     </section>
@@ -992,15 +1126,16 @@
 
     <!-- Problem Section -->
     <section class="problem">
-        <div class="problem-left">
-            <h2>The symptoms show up early.</h2>
-            <p>By the time most entrepreneurs realize they have an operations problem, they're already underwater. The good news: these patterns are predictable. And fixable.</p>
+        <div class="problem-image">
+            <img src="https://static.wixstatic.com/media/5e8141_2bce75e81d09461992987e5196c30137~mv2.jpg" alt="Business challenges">
         </div>
-        <div class="problem-right">
+        <div class="problem-content">
+            <p class="problem-eyebrow">Sound Familiar?</p>
+            <h2>The symptoms show up early.</h2>
             <ul class="problem-list">
                 <li>
                     <span class="problem-number">01</span>
-                    <div><strong>You're turning down clients</strong> because you're already maxed out. Not because you don't want the work.</div>
+                    <div><strong>Turning down clients</strong> because you're already maxed out. Not because you don't want the work.</div>
                 </li>
                 <li>
                     <span class="problem-number">02</span>
@@ -1008,11 +1143,11 @@
                 </li>
                 <li>
                     <span class="problem-number">03</span>
-                    <div><strong>Half your week is admin.</strong> Follow-ups. Invoices. Putting out fires. Not the work you're actually good at.</div>
+                    <div><strong>Half your week is admin.</strong> Follow-ups. Invoices. Putting out fires instead of doing the work you're good at.</div>
                 </li>
                 <li>
                     <span class="problem-number">04</span>
-                    <div><strong>You can't hire because nothing is documented.</strong> How do you train someone when the process lives in your head?</div>
+                    <div><strong>Can't hire because nothing is documented.</strong> How do you train someone when the process lives in your head?</div>
                 </li>
             </ul>
         </div>
@@ -1021,8 +1156,9 @@
     <!-- Services -->
     <section class="services" id="services">
         <div class="services-header">
-            <h2>How I Work</h2>
-            <p>Three distinct engagements designed to meet you where you are.</p>
+            <p class="services-eyebrow">How I Work</p>
+            <h2>Three distinct engagements</h2>
+            <p>Designed to meet you where you are and get you where you need to be.</p>
         </div>
         <div class="services-grid">
             <div class="service-card">
@@ -1043,59 +1179,57 @@
         </div>
     </section>
 
-    <!-- Featured Result -->
-    <section class="result">
-        <div class="result-content">
-            <p class="result-eyebrow">Client Results</p>
-            <p class="result-quote">"Working with HowOps transformed how I run my practice. Before, I was drowning in administrative tasks. Now my systems run themselves. I've doubled my client capacity without adding hours to my week."</p>
-            <div class="result-author">
-                <img src="https://static.wixstatic.com/media/2853e8_30a8c226eaa44f20b55ad1214803ccb5~mv2.png" alt="Glenn Windom II" class="result-avatar">
-                <div class="result-info">
+    <!-- Testimonial -->
+    <section class="testimonial">
+        <div class="testimonial-inner">
+            <p class="testimonial-eyebrow">Client Results</p>
+            <p class="testimonial-quote">"Working with HowOps transformed how I run my practice. Before, I was drowning in administrative tasks. Now my systems run themselves. I've doubled my client capacity without adding hours to my week."</p>
+            <div class="testimonial-author">
+                <img src="https://static.wixstatic.com/media/2853e8_30a8c226eaa44f20b55ad1214803ccb5~mv2.png" alt="Glenn Windom II" class="testimonial-avatar">
+                <div class="testimonial-info">
                     <p>Glenn Windom II</p>
                     <span>Founder, WISE Financial Partners</span>
                 </div>
             </div>
-        </div>
-        <div class="result-image">
-            <img src="https://static.wixstatic.com/media/2853e8_30a8c226eaa44f20b55ad1214803ccb5~mv2.png" alt="WISE Financial Partners">
-            <div class="result-stat">
-                <h4>2x</h4>
-                <p>Client Capacity</p>
+            <div class="testimonial-result">
+                <strong>2x</strong>
+                <span>Client Capacity</span>
             </div>
         </div>
     </section>
 
-    <!-- Data Points -->
+    <!-- Data -->
     <section class="data">
         <div class="data-header">
+            <p class="data-eyebrow">The Research</p>
             <h2>The Numbers Don't Lie</h2>
-            <p>These aren't opinions. They're patterns backed by research.</p>
+            <p>These aren't opinions. They're patterns backed by data.</p>
         </div>
         <div class="data-grid">
             <div class="data-card">
                 <div class="data-stat">82%</div>
                 <h3>of businesses fail due to cash flow problems</h3>
-                <p>Most cash flow issues trace back to operational gaps: late invoices, slow follow-ups, manual processes.</p>
+                <p>Most trace back to operational gaps: late invoices, slow follow-ups, manual processes.</p>
             </div>
             <div class="data-card">
                 <div class="data-stat">78%</div>
                 <h3>of leads choose the first responder</h3>
-                <p>Speed wins. If you're taking 48 hours to respond, you're losing to someone who took 48 minutes.</p>
+                <p>Speed wins. 48 hours to respond means losing to someone who took 48 minutes.</p>
             </div>
             <div class="data-card">
                 <div class="data-stat">30%</div>
                 <h3>of revenue lost to inefficiency</h3>
-                <p>Rework, errors, duplicated effort. Businesses without systems leave money on the table.</p>
+                <p>Rework, errors, duplicated effort. No systems means money on the table.</p>
             </div>
             <div class="data-card">
                 <div class="data-stat">96%</div>
                 <h3>plateau without documented processes</h3>
-                <p>Only 4% of businesses break past $1M without systems. The ceiling isn't talent. It's infrastructure.</p>
+                <p>Only 4% break past $1M without systems. The ceiling isn't talent.</p>
             </div>
         </div>
     </section>
 
-    <!-- Founder Section -->
+    <!-- Founder -->
     <section class="founder" id="about">
         <div class="founder-image">
             <img src="https://static.wixstatic.com/media/5e8141_487cbeb5c7204034a4c5f39e37f8202b~mv2.jpg" alt="Andra Howard">
