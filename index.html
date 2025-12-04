@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HowOps | Strategy Meets Structure</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --white: #ffffff;
+            --gold: #D4AF37;
+            --gold-light: #F4E4A6;
+            --cream: #FAF8F5;
+            --charcoal: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease, background 0.2s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor.hover {
+            transform: translate(-50%, -50%) scale(2);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        /* Animated Background */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .gradient-sphere {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .sphere-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+            top: -200px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .sphere-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #8B4513 0%, transparent 70%);
+            bottom: -100px;
+            left: -100px;
+            animation-delay: -4s;
+        }
+
+        .sphere-3 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--gold-light) 0%, transparent 70%);
+            top: 50%;
+            left: 30%;
+            animation-delay: -2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        /* Grid overlay */
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            mix-blend-mode: difference;
+        }
+
+        .logo {
+            height: 50px;
+            filter: brightness(0) invert(1);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--white);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--white) !important;
+            color: var(--black) !important;
+            padding: 1rem 2rem !important;
+            font-weight: 600 !important;
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        /* Hero Content */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 4rem;
+            width: 100%;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: slideUp 1s ease forwards 0.2s;
+        }
+
+        .hero-tag::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .hero-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(4rem, 15vw, 12rem);
+            line-height: 0.9;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+        }
+
+        .hero-title .line {
+            display: block;
+            overflow: hidden;
+        }
+
+        .hero-title .line span {
+            display: block;
+            transform: translateY(100%);
+            animation: revealText 1s ease forwards;
+        }
+
+        .hero-title .line:nth-child(1) span { animation-delay: 0.3s; }
+        .hero-title .line:nth-child(2) span { animation-delay: 0.4s; }
+        .hero-title .line:nth-child(3) span { animation-delay: 0.5s; }
+
+        .hero-title .highlight {
+            color: var(--gold);
+            position: relative;
+        }
+
+        @keyframes revealText {
+            to { transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            max-width: 550px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: slideUp 1s ease forwards 0.7s;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--gold);
+            color: var(--black);
+            padding: 1.25rem 2.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            opacity: 0;
+            animation: slideUp 1s ease forwards 0.8s;
+        }
+
+        .hero-cta:hover {
+            background: var(--gold-light);
+            transform: translateX(10px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .hero-cta svg {
+            transition: transform 0.3s ease;
+        }
+
+        .hero-cta:hover svg {
+            transform: translateX(5px);
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 4rem;
+            bottom: 0;
+            width: 40%;
+            max-width: 500px;
+            z-index: 2;
+            opacity: 0;
+            animation: fadeIn 1.2s ease forwards 0.5s;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            filter: grayscale(30%) contrast(1.1);
+            mask-image: linear-gradient(to top, transparent 0%, black 20%);
+            -webkit-mask-image: linear-gradient(to top, transparent 0%, black 20%);
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 4rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            z-index: 10;
+            opacity: 0;
+            animation: slideUp 1s ease forwards 1s;
+        }
+
+        .scroll-line {
+            width: 60px;
+            height: 2px;
+            background: rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scroll-line::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 100%;
+            background: var(--gold);
+            animation: scrollMove 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollMove {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(200%); }
+        }
+
+        .scroll-text {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Marquee */
+        .marquee-section {
+            background: var(--gold);
+            padding: 1.5rem 0;
+            overflow: hidden;
+        }
+
+        .marquee {
+            display: flex;
+            animation: marquee 20s linear infinite;
+        }
+
+        .marquee-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            padding-right: 4rem;
+            white-space: nowrap;
+        }
+
+        .marquee-content span {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: var(--black);
+            letter-spacing: 0.1em;
+        }
+
+        .marquee-content .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--black);
+            border-radius: 50%;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 8rem 4rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            background: var(--charcoal);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 3rem 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s ease;
+        }
+
+        .stat-item:hover {
+            border-color: var(--gold);
+            transform: translateY(-10px);
+        }
+
+        .stat-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 5rem;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* About Section */
+        .about {
+            padding: 10rem 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            filter: grayscale(50%);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--gold);
+            z-index: -1;
+        }
+
+        .about-content h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            line-height: 1;
+        }
+
+        .about-content h2 span {
+            color: var(--gold);
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 1.5rem;
+        }
+
+        .credentials-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .credential-tag {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 0.75rem 1.5rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 10rem 4rem;
+            background: linear-gradient(135deg, var(--charcoal) 0%, var(--black) 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .section-tag {
+            font-size: 0.8rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+        }
+
+        .service-card {
+            padding: 4rem 3rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(180deg, rgba(212, 175, 55, 0.1) 0%, transparent 100%);
+            transition: height 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-card:hover {
+            border-color: var(--gold);
+        }
+
+        .service-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 8rem;
+            color: var(--gold);
+            opacity: 0.1;
+            position: absolute;
+            top: -1rem;
+            right: 1rem;
+            line-height: 1;
+        }
+
+        .service-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .service-card p {
+            color: rgba(255,255,255,0.6);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .service-list {
+            list-style: none;
+            position: relative;
+        }
+
+        .service-list li {
+            padding: 0.75rem 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.5);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .service-list li::before {
+            content: '→';
+            color: var(--gold);
+        }
+
+        /* Process Section */
+        .process {
+            padding: 10rem 4rem;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            margin-top: 6rem;
+        }
+
+        .process-step {
+            padding: 3rem;
+            border-left: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+        }
+
+        .process-step:first-child {
+            border-left: none;
+        }
+
+        .process-step::before {
+            content: '';
+            position: absolute;
+            top: 3rem;
+            left: -6px;
+            width: 12px;
+            height: 12px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+
+        .process-step:first-child::before {
+            display: none;
+        }
+
+        .step-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            color: var(--gold);
+            opacity: 0.3;
+            margin-bottom: 1rem;
+        }
+
+        .process-step h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .process-step p {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 12rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 60%);
+            filter: blur(60px);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 10vw, 8rem);
+            line-height: 1;
+            margin-bottom: 2rem;
+        }
+
+        .cta h2 span {
+            color: var(--gold);
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.6);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--gold);
+            color: var(--black);
+            padding: 1.5rem 3rem;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.4s ease;
+        }
+
+        .cta-btn:hover {
+            background: var(--white);
+            transform: scale(1.05);
+            box-shadow: 0 30px 60px rgba(212, 175, 55, 0.3);
+        }
+
+        .cta-email {
+            display: block;
+            margin-top: 2rem;
+            color: var(--gold);
+            font-size: 1.1rem;
+            text-decoration: none;
+            letter-spacing: 0.05em;
+        }
+
+        .cta-email:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            height: 40px;
+            filter: brightness(0) invert(1);
+        }
+
+        footer p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Mobile */
+        @media (max-width: 1024px) {
+            nav, .hero-content, .stats, .about, .services, .process, .cta, footer {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+
+            .hero-image {
+                display: none;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 4rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cursor, .cursor-dot {
+                display: none;
+            }
+
+            * {
+                cursor: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <img src="https://static.wixstatic.com/media/5e8141_9abd19516af54b5c9b1578f508cbed49~mv2.png" alt="HowOps" class="logo">
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#process">Process</a>
+            <a href="#contact" class="nav-cta">Let's Talk</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="gradient-sphere sphere-1"></div>
+            <div class="gradient-sphere sphere-2"></div>
+            <div class="gradient-sphere sphere-3"></div>
+        </div>
+        <div class="grid-overlay"></div>
+
+        <div class="hero-content">
+            <span class="hero-tag">Operations Consulting</span>
+            <h1 class="hero-title">
+                <span class="line"><span>STRATEGY</span></span>
+                <span class="line"><span>MEETS</span></span>
+                <span class="line"><span class="highlight">STRUCTURE</span></span>
+            </h1>
+            <p class="hero-description">We don't just advise—we build operational systems that actually work. For consultants and small businesses ready to scale with intention.</p>
+            <a href="#contact" class="hero-cta">
+                Book Your Strategy Call
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+
+        <div class="hero-image">
+            <img src="https://static.wixstatic.com/media/5e8141_eaffcc8ad97f46ac8a8ecd4e08d35869~mv2.png" alt="Andra Howard">
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+            <span class="scroll-text">Scroll to explore</span>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee-section">
+        <div class="marquee">
+            <div class="marquee-content">
+                <span>SYSTEMS THAT SCALE</span>
+                <div class="dot"></div>
+                <span>STRATEGY WITH PURPOSE</span>
+                <div class="dot"></div>
+                <span>VISION TO EXECUTION</span>
+                <div class="dot"></div>
+                <span>OPERATIONS REFINED</span>
+                <div class="dot"></div>
+            </div>
+            <div class="marquee-content">
+                <span>SYSTEMS THAT SCALE</span>
+                <div class="dot"></div>
+                <span>STRATEGY WITH PURPOSE</span>
+                <div class="dot"></div>
+                <span>VISION TO EXECUTION</span>
+                <div class="dot"></div>
+                <span>OPERATIONS REFINED</span>
+                <div class="dot"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats -->
+    <section class="stats">
+        <div class="stat-item">
+            <div class="stat-number">8+</div>
+            <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Systems Built</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Custom Solutions</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">Possibilities</div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="about-image">
+            <img src="https://static.wixstatic.com/media/5e8141_eaffcc8ad97f46ac8a8ecd4e08d35869~mv2.png" alt="Andra Howard">
+        </div>
+        <div class="about-content">
+            <h2>MEET <span>ANDRA</span></h2>
+            <p><strong>Andra Howard, MA</strong> founded HowOps to bring structure to visionaries. With 8+ years leading operations across defense contracting, federal law enforcement, and nonprofit management, he knows sustainable growth requires systems—not chaos.</p>
+            <p>This isn't cookie-cutter consulting. It's a strategic partnership built on listening first, then designing infrastructure that actually works for your business, your capacity, and your goals.</p>
+            <div class="credentials-list">
+                <span class="credential-tag">M.A. Organizational Communication</span>
+                <span class="credential-tag">EdD Candidate, USC</span>
+                <span class="credential-tag">Nonprofit Founder</span>
+                <span class="credential-tag">Federal Ops</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <span class="section-tag">What We Do</span>
+            <h2 class="section-title">SERVICES THAT MOVE THE NEEDLE</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-number">01</span>
+                <h3>STRATEGY MAPPING</h3>
+                <p>Deep-dive sessions to understand your vision, identify gaps, and create a prioritized roadmap.</p>
+                <ul class="service-list">
+                    <li>Business model analysis</li>
+                    <li>Gap identification</li>
+                    <li>90-day action plan</li>
+                    <li>Priority matrix</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <span class="service-number">02</span>
+                <h3>SYSTEMS DESIGN</h3>
+                <p>Custom operational infrastructure built to match your workflow and scale with you.</p>
+                <ul class="service-list">
+                    <li>Workflow automation</li>
+                    <li>SOP development</li>
+                    <li>Tech stack optimization</li>
+                    <li>Team structure design</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <span class="service-number">03</span>
+                <h3>IMPLEMENTATION</h3>
+                <p>We don't just hand you a plan. We build, test, and refine alongside your team.</p>
+                <ul class="service-list">
+                    <li>Hands-on buildout</li>
+                    <li>Team training</li>
+                    <li>Ongoing optimization</li>
+                    <li>Accountability check-ins</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="process" id="process">
+        <div class="section-header">
+            <span class="section-tag">How It Works</span>
+            <h2 class="section-title">THE PROCESS</h2>
+        </div>
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="step-number">01</div>
+                <h4>DISCOVERY CALL</h4>
+                <p>30-minute conversation to understand your challenges and determine fit. No pressure, no pitch.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">02</div>
+                <h4>ASSESSMENT</h4>
+                <p>Deep analysis of your current operations, identifying quick wins and long-term opportunities.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">03</div>
+                <h4>ROADMAP</h4>
+                <p>Detailed action plan with clear milestones, resources, and realistic timelines.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">04</div>
+                <h4>BUILD & ITERATE</h4>
+                <p>Hands-on implementation with regular check-ins and optimization as systems come to life.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" id="contact">
+        <div class="cta-bg"></div>
+        <div class="cta-content">
+            <h2>READY TO BUILD<br><span>SOMETHING REAL?</span></h2>
+            <p>Book a complimentary 30-minute discovery call. We'll discuss your vision, challenges, and whether HowOps is the right fit.</p>
+            <a href="mailto:contact@HowOpsConsulting.com?subject=Discovery%20Call%20Request" class="cta-btn">
+                Schedule Your Call
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+            <a href="mailto:contact@HowOpsConsulting.com" class="cta-email">contact@HowOpsConsulting.com</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <img src="https://static.wixstatic.com/media/5e8141_9abd19516af54b5c9b1578f508cbed49~mv2.png" alt="HowOps" class="footer-logo">
+        <p>© 2025 Howard Operations Consulting Group. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorDot = document.querySelector('.cursor-dot');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            cursorDot.style.left = e.clientX + 'px';
+            cursorDot.style.top = e.clientY + 'px';
+        });
+
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stat-item, .service-card, .process-step').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(40px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
