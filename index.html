@@ -3,25 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HowOps | Strategy Meets Structure</title>
+    <title>HowOps | Operational Excellence for Growing Businesses</title>
+    <meta name="description" content="Strategic operations consulting for consultants and small businesses. We build systems that scale.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --black: #0a0a0a;
-            --white: #ffffff;
-            --gold: #D4AF37;
-            --gold-light: #F4E4A6;
-            --cream: #FAF8F5;
+            --dark: #111111;
             --charcoal: #1a1a1a;
+            --gray-900: #222222;
+            --gray-800: #333333;
+            --gray-600: #666666;
+            --gray-400: #999999;
+            --silver: #C0C0C0;
+            --silver-light: #E8E8E8;
+            --white: #ffffff;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: none;
         }
 
         html {
@@ -29,112 +33,11 @@
         }
 
         body {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--black);
             color: var(--white);
-            overflow-x: hidden;
-        }
-
-        /* Custom Cursor */
-        .cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.1s ease, background 0.2s ease;
-            transform: translate(-50%, -50%);
-        }
-
-        .cursor-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--gold);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-        }
-
-        .cursor.hover {
-            transform: translate(-50%, -50%) scale(2);
-            background: rgba(212, 175, 55, 0.1);
-        }
-
-        /* Animated Background */
-        .hero {
-            min-height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-
-        .gradient-sphere {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.6;
-            animation: float 8s ease-in-out infinite;
-        }
-
-        .sphere-1 {
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
-            top: -200px;
-            right: -100px;
-            animation-delay: 0s;
-        }
-
-        .sphere-2 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, #8B4513 0%, transparent 70%);
-            bottom: -100px;
-            left: -100px;
-            animation-delay: -4s;
-        }
-
-        .sphere-3 {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, var(--gold-light) 0%, transparent 70%);
-            top: 50%;
-            left: 30%;
-            animation-delay: -2s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -30px) scale(1.05); }
-            66% { transform: translate(-20px, 20px) scale(0.95); }
-        }
-
-        /* Grid overlay */
-        .grid-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
-            z-index: 1;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* Navigation */
@@ -144,15 +47,17 @@
             left: 0;
             right: 0;
             z-index: 100;
-            padding: 2rem 4rem;
+            padding: 1.5rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            mix-blend-mode: difference;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .logo {
-            height: 50px;
+            height: 40px;
             filter: brightness(0) invert(1);
         }
 
@@ -163,296 +68,202 @@
         }
 
         .nav-links a {
-            color: var(--white);
+            color: var(--gray-400);
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 0.875rem;
             font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            position: relative;
-            padding: 0.5rem 0;
+            letter-spacing: 0.02em;
+            transition: color 0.3s ease;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--white);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
+        .nav-links a:hover {
+            color: var(--white);
         }
 
         .nav-cta {
-            background: var(--white) !important;
+            background: var(--white);
             color: var(--black) !important;
-            padding: 1rem 2rem !important;
-            font-weight: 600 !important;
+            padding: 0.75rem 1.75rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
 
-        .nav-cta::after {
-            display: none !important;
+        .nav-cta:hover {
+            background: var(--silver-light);
         }
 
-        /* Hero Content */
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 0 4rem;
-            width: 100%;
-        }
-
-        .hero-tag {
-            display: inline-flex;
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
             align-items: center;
-            gap: 1rem;
-            font-size: 0.8rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: slideUp 1s ease forwards 0.2s;
-        }
-
-        .hero-tag::before {
-            content: '';
-            width: 40px;
-            height: 1px;
-            background: var(--gold);
-        }
-
-        .hero-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(4rem, 15vw, 12rem);
-            line-height: 0.9;
-            letter-spacing: -0.02em;
-            margin-bottom: 2rem;
-        }
-
-        .hero-title .line {
-            display: block;
+            padding: 8rem 5% 6rem;
+            position: relative;
             overflow: hidden;
         }
 
-        .hero-title .line span {
-            display: block;
-            transform: translateY(100%);
-            animation: revealText 1s ease forwards;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(192, 192, 192, 0.03) 100%);
+            pointer-events: none;
         }
 
-        .hero-title .line:nth-child(1) span { animation-delay: 0.3s; }
-        .hero-title .line:nth-child(2) span { animation-delay: 0.4s; }
-        .hero-title .line:nth-child(3) span { animation-delay: 0.5s; }
-
-        .hero-title .highlight {
-            color: var(--gold);
-            position: relative;
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
         }
 
-        @keyframes revealText {
-            to { transform: translateY(0); }
+        .hero-content {
+            max-width: 600px;
         }
 
-        @keyframes slideUp {
-            to { opacity: 1; transform: translateY(0); }
+        .hero-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--silver);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--silver);
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 500;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-title span {
+            color: var(--silver);
         }
 
         .hero-description {
-            font-size: 1.25rem;
-            max-width: 550px;
+            font-size: 1.125rem;
+            color: var(--gray-400);
+            margin-bottom: 2.5rem;
             line-height: 1.8;
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 3rem;
-            opacity: 0;
-            animation: slideUp 1s ease forwards 0.7s;
         }
 
         .hero-cta {
             display: inline-flex;
             align-items: center;
-            gap: 1rem;
-            background: var(--gold);
+            gap: 0.75rem;
+            background: var(--white);
             color: var(--black);
-            padding: 1.25rem 2.5rem;
-            font-size: 0.9rem;
+            padding: 1rem 2rem;
+            font-size: 0.875rem;
             font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
+            letter-spacing: 0.05em;
             text-decoration: none;
-            transition: all 0.4s ease;
-            opacity: 0;
-            animation: slideUp 1s ease forwards 0.8s;
+            transition: all 0.3s ease;
         }
 
         .hero-cta:hover {
-            background: var(--gold-light);
-            transform: translateX(10px);
-            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+            background: var(--silver-light);
+            transform: translateY(-2px);
         }
 
         .hero-cta svg {
+            width: 16px;
+            height: 16px;
             transition: transform 0.3s ease;
         }
 
         .hero-cta:hover svg {
-            transform: translateX(5px);
+            transform: translateX(4px);
         }
 
         .hero-image {
-            position: absolute;
-            right: 4rem;
-            bottom: 0;
-            width: 40%;
-            max-width: 500px;
-            z-index: 2;
-            opacity: 0;
-            animation: fadeIn 1.2s ease forwards 0.5s;
+            position: relative;
         }
 
         .hero-image img {
             width: 100%;
-            height: auto;
-            filter: grayscale(30%) contrast(1.1);
-            mask-image: linear-gradient(to top, transparent 0%, black 20%);
-            -webkit-mask-image: linear-gradient(to top, transparent 0%, black 20%);
+            max-width: 480px;
+            filter: grayscale(100%);
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        /* Scroll indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 3rem;
-            left: 4rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            z-index: 10;
-            opacity: 0;
-            animation: slideUp 1s ease forwards 1s;
-        }
-
-        .scroll-line {
-            width: 60px;
-            height: 2px;
-            background: rgba(255,255,255,0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .scroll-line::after {
+        .hero-image::before {
             content: '';
             position: absolute;
-            left: 0;
-            top: 0;
-            width: 30px;
-            height: 100%;
-            background: var(--gold);
-            animation: scrollMove 2s ease-in-out infinite;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            border: 1px solid var(--silver);
+            opacity: 0.3;
+            z-index: -1;
         }
 
-        @keyframes scrollMove {
-            0%, 100% { transform: translateX(-100%); }
-            50% { transform: translateX(200%); }
+        /* Stats Bar */
+        .stats-bar {
+            background: var(--dark);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .scroll-text {
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.5);
-        }
-
-        /* Marquee */
-        .marquee-section {
-            background: var(--gold);
-            padding: 1.5rem 0;
-            overflow: hidden;
-        }
-
-        .marquee {
-            display: flex;
-            animation: marquee 20s linear infinite;
-        }
-
-        .marquee-content {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-            padding-right: 4rem;
-            white-space: nowrap;
-        }
-
-        .marquee-content span {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.5rem;
-            color: var(--black);
-            letter-spacing: 0.1em;
-        }
-
-        .marquee-content .dot {
-            width: 8px;
-            height: 8px;
-            background: var(--black);
-            border-radius: 50%;
-        }
-
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* Stats Section */
-        .stats {
-            padding: 8rem 4rem;
+        .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            background: var(--charcoal);
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .stat-item {
-            text-align: center;
             padding: 3rem 2rem;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.4s ease;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.05);
         }
 
-        .stat-item:hover {
-            border-color: var(--gold);
-            transform: translateY(-10px);
+        .stat-item:last-child {
+            border-right: none;
         }
 
         .stat-number {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 5rem;
-            color: var(--gold);
-            line-height: 1;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 500;
+            color: var(--silver);
             margin-bottom: 0.5rem;
         }
 
         .stat-label {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
+            font-weight: 500;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.6);
+            color: var(--gray-600);
         }
 
         /* About Section */
         .about {
-            padding: 10rem 4rem;
+            padding: 8rem 5%;
+            background: var(--black);
+        }
+
+        .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1.2fr;
             gap: 6rem;
             align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .about-image {
@@ -461,371 +272,401 @@
 
         .about-image img {
             width: 100%;
-            filter: grayscale(50%);
+            max-width: 450px;
+            filter: grayscale(100%);
         }
 
-        .about-image::before {
+        .about-image::after {
             content: '';
             position: absolute;
-            top: -20px;
-            left: -20px;
-            width: 100%;
-            height: 100%;
-            border: 2px solid var(--gold);
+            bottom: -15px;
+            right: -15px;
+            width: 60%;
+            height: 60%;
+            border: 1px solid var(--silver);
+            opacity: 0.2;
             z-index: -1;
         }
 
-        .about-content h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 4rem;
-            margin-bottom: 2rem;
-            line-height: 1;
+        .about-content {
+            max-width: 560px;
         }
 
-        .about-content h2 span {
-            color: var(--gold);
+        .section-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--silver);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .section-title span {
+            color: var(--silver);
         }
 
         .about-content p {
-            font-size: 1.1rem;
+            font-size: 1rem;
+            color: var(--gray-400);
+            margin-bottom: 1.25rem;
             line-height: 1.9;
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 1.5rem;
         }
 
-        .credentials-list {
+        .credentials {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 0.75rem;
             margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        .credential-tag {
-            background: transparent;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            padding: 0.75rem 1.5rem;
-            font-size: 0.8rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
+        .credential {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--gray-600);
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .credential:hover {
+            border-color: var(--silver);
+            color: var(--silver);
         }
 
         /* Services Section */
         .services {
-            padding: 10rem 4rem;
-            background: linear-gradient(135deg, var(--charcoal) 0%, var(--black) 100%);
+            padding: 8rem 5%;
+            background: var(--charcoal);
         }
 
-        .section-header {
+        .services-header {
             text-align: center;
-            margin-bottom: 6rem;
-        }
-
-        .section-tag {
-            font-size: 0.8rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .section-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(3rem, 8vw, 6rem);
-            line-height: 1;
+            max-width: 600px;
+            margin: 0 auto 5rem;
         }
 
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 0;
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .service-card {
-            padding: 4rem 3rem;
-            border: 1px solid rgba(255,255,255,0.1);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.5s ease;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 0;
-            background: linear-gradient(180deg, rgba(212, 175, 55, 0.1) 0%, transparent 100%);
-            transition: height 0.5s ease;
-        }
-
-        .service-card:hover::before {
-            height: 100%;
+            background: var(--dark);
+            padding: 3rem 2.5rem;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.4s ease;
         }
 
         .service-card:hover {
-            border-color: var(--gold);
+            border-color: rgba(192, 192, 192, 0.3);
+            transform: translateY(-5px);
         }
 
         .service-number {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 8rem;
-            color: var(--gold);
-            opacity: 0.1;
-            position: absolute;
-            top: -1rem;
-            right: 1rem;
-            line-height: 1;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--silver);
+            opacity: 0.2;
+            margin-bottom: 1.5rem;
         }
 
         .service-card h3 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            position: relative;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 0.02em;
         }
 
         .service-card p {
-            color: rgba(255,255,255,0.6);
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            position: relative;
+            font-size: 0.9375rem;
+            color: var(--gray-400);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
         }
 
         .service-list {
             list-style: none;
-            position: relative;
         }
 
         .service-list li {
-            padding: 0.75rem 0;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.5);
+            padding: 0.625rem 0;
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            border-top: 1px solid rgba(255,255,255,0.05);
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
         }
 
         .service-list li::before {
-            content: '→';
-            color: var(--gold);
+            content: '—';
+            color: var(--silver);
+            font-weight: 300;
         }
 
         /* Process Section */
         .process {
-            padding: 10rem 4rem;
+            padding: 8rem 5%;
+            background: var(--black);
+        }
+
+        .process-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 5rem;
         }
 
         .process-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 0;
-            margin-top: 6rem;
-        }
-
-        .process-step {
-            padding: 3rem;
-            border-left: 1px solid rgba(255,255,255,0.1);
+            max-width: 1400px;
+            margin: 0 auto;
             position: relative;
         }
 
-        .process-step:first-child {
-            border-left: none;
-        }
-
-        .process-step::before {
+        .process-grid::before {
             content: '';
             position: absolute;
-            top: 3rem;
-            left: -6px;
-            width: 12px;
-            height: 12px;
-            background: var(--gold);
-            border-radius: 50%;
+            top: 2rem;
+            left: 12.5%;
+            right: 12.5%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--silver), var(--silver), transparent);
+            opacity: 0.2;
         }
 
-        .process-step:first-child::before {
-            display: none;
+        .process-step {
+            text-align: center;
+            padding: 0 1.5rem;
         }
 
         .step-number {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 4rem;
-            color: var(--gold);
-            opacity: 0.3;
-            margin-bottom: 1rem;
+            width: 48px;
+            height: 48px;
+            border: 1px solid var(--silver);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--silver);
+            background: var(--black);
+            position: relative;
+            z-index: 1;
         }
 
         .process-step h4 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.02em;
         }
 
         .process-step p {
-            font-size: 0.95rem;
-            color: rgba(255,255,255,0.5);
+            font-size: 0.875rem;
+            color: var(--gray-600);
             line-height: 1.7;
         }
 
         /* CTA Section */
         .cta {
-            padding: 12rem 4rem;
+            padding: 10rem 5%;
+            background: linear-gradient(180deg, var(--charcoal) 0%, var(--black) 100%);
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-bg {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 60%);
-            filter: blur(60px);
         }
 
         .cta-content {
-            position: relative;
-            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         .cta h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(3rem, 10vw, 8rem);
-            line-height: 1;
-            margin-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
         }
 
         .cta h2 span {
-            color: var(--gold);
+            color: var(--silver);
         }
 
         .cta p {
-            font-size: 1.2rem;
-            color: rgba(255,255,255,0.6);
-            max-width: 600px;
-            margin: 0 auto 3rem;
+            font-size: 1.0625rem;
+            color: var(--gray-400);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
         }
 
         .cta-btn {
             display: inline-flex;
             align-items: center;
-            gap: 1rem;
-            background: var(--gold);
+            gap: 0.75rem;
+            background: var(--white);
             color: var(--black);
-            padding: 1.5rem 3rem;
-            font-size: 1rem;
+            padding: 1.125rem 2.5rem;
+            font-size: 0.9375rem;
             font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
+            letter-spacing: 0.03em;
             text-decoration: none;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
         }
 
         .cta-btn:hover {
-            background: var(--white);
-            transform: scale(1.05);
-            box-shadow: 0 30px 60px rgba(212, 175, 55, 0.3);
+            background: var(--silver-light);
+            transform: translateY(-2px);
         }
 
         .cta-email {
             display: block;
-            margin-top: 2rem;
-            color: var(--gold);
-            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            color: var(--gray-600);
+            font-size: 0.9375rem;
             text-decoration: none;
-            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
         }
 
         .cta-email:hover {
-            text-decoration: underline;
+            color: var(--silver);
         }
 
         /* Footer */
         footer {
-            padding: 4rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 3rem 5%;
+            border-top: 1px solid rgba(255,255,255,0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .footer-logo {
-            height: 40px;
+            height: 32px;
             filter: brightness(0) invert(1);
+            opacity: 0.7;
         }
 
         footer p {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.5);
+            font-size: 0.8125rem;
+            color: var(--gray-600);
         }
 
-        /* Mobile */
+        /* Responsive */
         @media (max-width: 1024px) {
-            nav, .hero-content, .stats, .about, .services, .process, .cta, footer {
-                padding-left: 2rem;
-                padding-right: 2rem;
+            .hero-grid,
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 4rem;
             }
 
             .hero-image {
-                display: none;
+                order: -1;
+                text-align: center;
             }
 
-            .stats {
+            .hero-image img {
+                max-width: 400px;
+            }
+
+            .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .about {
-                grid-template-columns: 1fr;
+            .stat-item:nth-child(2) {
+                border-right: none;
             }
 
             .services-grid {
                 grid-template-columns: 1fr;
+                max-width: 500px;
             }
 
             .process-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 3rem;
+            }
+
+            .process-grid::before {
+                display: none;
             }
         }
 
         @media (max-width: 768px) {
+            nav {
+                padding: 1rem 5%;
+            }
+
             .nav-links {
                 display: none;
             }
 
-            .hero-title {
-                font-size: 4rem;
+            .hero {
+                padding: 7rem 5% 4rem;
             }
 
-            .stats {
+            .stats-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .stat-item {
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+                padding: 2rem;
+            }
+
+            .stat-item:last-child {
+                border-bottom: none;
             }
 
             .process-grid {
                 grid-template-columns: 1fr;
             }
 
-            .cursor, .cursor-dot {
-                display: none;
+            footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        /* Subtle animations */
+        @media (prefers-reduced-motion: no-preference) {
+            .service-card,
+            .stat-item,
+            .process-step {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.6s ease, transform 0.6s ease;
             }
 
-            * {
-                cursor: auto;
+            .service-card.visible,
+            .stat-item.visible,
+            .process-step.visible {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-    <div class="cursor-dot"></div>
-
     <!-- Navigation -->
     <nav>
         <img src="https://static.wixstatic.com/media/5e8141_9abd19516af54b5c9b1578f508cbed49~mv2.png" alt="HowOps" class="logo">
@@ -833,131 +674,95 @@
             <a href="#about">About</a>
             <a href="#services">Services</a>
             <a href="#process">Process</a>
-            <a href="#contact" class="nav-cta">Let's Talk</a>
+            <a href="https://calendar.app.google/SnQB3ANFcue1HCEEA" target="_blank" class="nav-cta">Schedule a Call</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-bg">
-            <div class="gradient-sphere sphere-1"></div>
-            <div class="gradient-sphere sphere-2"></div>
-            <div class="gradient-sphere sphere-3"></div>
-        </div>
-        <div class="grid-overlay"></div>
-
-        <div class="hero-content">
-            <span class="hero-tag">Operations Consulting</span>
-            <h1 class="hero-title">
-                <span class="line"><span>STRATEGY</span></span>
-                <span class="line"><span>MEETS</span></span>
-                <span class="line"><span class="highlight">STRUCTURE</span></span>
-            </h1>
-            <p class="hero-description">We don't just advise—we build operational systems that actually work. For consultants and small businesses ready to scale with intention.</p>
-            <a href="#contact" class="hero-cta">
-                Book Your Strategy Call
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </a>
-        </div>
-
-        <div class="hero-image">
-            <img src="https://static.wixstatic.com/media/5e8141_eaffcc8ad97f46ac8a8ecd4e08d35869~mv2.png" alt="Andra Howard">
-        </div>
-
-        <div class="scroll-indicator">
-            <div class="scroll-line"></div>
-            <span class="scroll-text">Scroll to explore</span>
+        <div class="hero-grid">
+            <div class="hero-content">
+                <span class="hero-tag">Operations Consulting</span>
+                <h1 class="hero-title">Strategy Meets <span>Structure</span></h1>
+                <p class="hero-description">We build operational systems that scale. For consultants and business owners who are done with chaos and ready for infrastructure that works.</p>
+                <a href="https://calendar.app.google/SnQB3ANFcue1HCEEA" target="_blank" class="hero-cta">
+                    Schedule Your Consultation
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="hero-image">
+                <img src="https://static.wixstatic.com/media/5e8141_487cbeb5c7204034a4c5f39e37f8202b~mv2.jpg" alt="Andra Howard - Operations Consultant">
+            </div>
         </div>
     </section>
 
-    <!-- Marquee -->
-    <div class="marquee-section">
-        <div class="marquee">
-            <div class="marquee-content">
-                <span>SYSTEMS THAT SCALE</span>
-                <div class="dot"></div>
-                <span>STRATEGY WITH PURPOSE</span>
-                <div class="dot"></div>
-                <span>VISION TO EXECUTION</span>
-                <div class="dot"></div>
-                <span>OPERATIONS REFINED</span>
-                <div class="dot"></div>
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">8+</div>
+                <div class="stat-label">Years Experience</div>
             </div>
-            <div class="marquee-content">
-                <span>SYSTEMS THAT SCALE</span>
-                <div class="dot"></div>
-                <span>STRATEGY WITH PURPOSE</span>
-                <div class="dot"></div>
-                <span>VISION TO EXECUTION</span>
-                <div class="dot"></div>
-                <span>OPERATIONS REFINED</span>
-                <div class="dot"></div>
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Systems Built</div>
             </div>
-        </div>
-    </div>
-
-    <!-- Stats -->
-    <section class="stats">
-        <div class="stat-item">
-            <div class="stat-number">8+</div>
-            <div class="stat-label">Years Experience</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">50+</div>
-            <div class="stat-label">Systems Built</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">100%</div>
-            <div class="stat-label">Custom Solutions</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">∞</div>
-            <div class="stat-label">Possibilities</div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Custom Solutions</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Ongoing Support</div>
+            </div>
         </div>
     </section>
 
-    <!-- About -->
+    <!-- About Section -->
     <section class="about" id="about">
-        <div class="about-image">
-            <img src="https://static.wixstatic.com/media/5e8141_eaffcc8ad97f46ac8a8ecd4e08d35869~mv2.png" alt="Andra Howard">
-        </div>
-        <div class="about-content">
-            <h2>MEET <span>ANDRA</span></h2>
-            <p><strong>Andra Howard, MA</strong> founded HowOps to bring structure to visionaries. With 8+ years leading operations across defense contracting, federal law enforcement, and nonprofit management, he knows sustainable growth requires systems—not chaos.</p>
-            <p>This isn't cookie-cutter consulting. It's a strategic partnership built on listening first, then designing infrastructure that actually works for your business, your capacity, and your goals.</p>
-            <div class="credentials-list">
-                <span class="credential-tag">M.A. Organizational Communication</span>
-                <span class="credential-tag">EdD Candidate, USC</span>
-                <span class="credential-tag">Nonprofit Founder</span>
-                <span class="credential-tag">Federal Ops</span>
+        <div class="about-grid">
+            <div class="about-image">
+                <img src="https://static.wixstatic.com/media/5e8141_487cbeb5c7204034a4c5f39e37f8202b~mv2.jpg" alt="Andra Howard">
+            </div>
+            <div class="about-content">
+                <span class="section-tag">Principal Consultant</span>
+                <h2 class="section-title">Andra <span>Howard</span>, MA</h2>
+                <p>HowOps was founded on a simple premise: sustainable growth requires systems, not chaos. With over eight years leading operations across defense contracting, federal law enforcement, and nonprofit management, I've seen what works—and what doesn't.</p>
+                <p>This isn't templated consulting. It's a strategic partnership built on understanding your business first, then designing infrastructure that aligns with your capacity, goals, and vision for growth.</p>
+                <div class="credentials">
+                    <span class="credential">M.A. Organizational Communication</span>
+                    <span class="credential">EdD Candidate, USC</span>
+                    <span class="credential">Nonprofit Founder</span>
+                    <span class="credential">Federal Operations</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Services -->
+    <!-- Services Section -->
     <section class="services" id="services">
-        <div class="section-header">
-            <span class="section-tag">What We Do</span>
-            <h2 class="section-title">SERVICES THAT MOVE THE NEEDLE</h2>
+        <div class="services-header">
+            <span class="section-tag">Services</span>
+            <h2 class="section-title">What We <span>Deliver</span></h2>
         </div>
         <div class="services-grid">
             <div class="service-card">
-                <span class="service-number">01</span>
-                <h3>STRATEGY MAPPING</h3>
-                <p>Deep-dive sessions to understand your vision, identify gaps, and create a prioritized roadmap.</p>
+                <div class="service-number">01</div>
+                <h3>Strategy Mapping</h3>
+                <p>Comprehensive analysis of your business model, operational gaps, and growth opportunities.</p>
                 <ul class="service-list">
                     <li>Business model analysis</li>
                     <li>Gap identification</li>
                     <li>90-day action plan</li>
-                    <li>Priority matrix</li>
+                    <li>Priority framework</li>
                 </ul>
             </div>
             <div class="service-card">
-                <span class="service-number">02</span>
-                <h3>SYSTEMS DESIGN</h3>
-                <p>Custom operational infrastructure built to match your workflow and scale with you.</p>
+                <div class="service-number">02</div>
+                <h3>Systems Design</h3>
+                <p>Custom operational infrastructure built to match your workflow and scale with your growth.</p>
                 <ul class="service-list">
                     <li>Workflow automation</li>
                     <li>SOP development</li>
@@ -966,58 +771,57 @@
                 </ul>
             </div>
             <div class="service-card">
-                <span class="service-number">03</span>
-                <h3>IMPLEMENTATION</h3>
-                <p>We don't just hand you a plan. We build, test, and refine alongside your team.</p>
+                <div class="service-number">03</div>
+                <h3>Implementation</h3>
+                <p>Hands-on buildout and integration. We don't just plan—we execute alongside your team.</p>
                 <ul class="service-list">
-                    <li>Hands-on buildout</li>
+                    <li>Direct implementation</li>
                     <li>Team training</li>
                     <li>Ongoing optimization</li>
-                    <li>Accountability check-ins</li>
+                    <li>Performance tracking</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- Process -->
+    <!-- Process Section -->
     <section class="process" id="process">
-        <div class="section-header">
-            <span class="section-tag">How It Works</span>
-            <h2 class="section-title">THE PROCESS</h2>
+        <div class="process-header">
+            <span class="section-tag">Process</span>
+            <h2 class="section-title">How We <span>Work</span></h2>
         </div>
         <div class="process-grid">
             <div class="process-step">
-                <div class="step-number">01</div>
-                <h4>DISCOVERY CALL</h4>
-                <p>30-minute conversation to understand your challenges and determine fit. No pressure, no pitch.</p>
+                <div class="step-number">1</div>
+                <h4>Discovery</h4>
+                <p>30-minute consultation to understand your challenges and determine fit.</p>
             </div>
             <div class="process-step">
-                <div class="step-number">02</div>
-                <h4>ASSESSMENT</h4>
-                <p>Deep analysis of your current operations, identifying quick wins and long-term opportunities.</p>
+                <div class="step-number">2</div>
+                <h4>Assessment</h4>
+                <p>Deep analysis of current operations, identifying quick wins and long-term opportunities.</p>
             </div>
             <div class="process-step">
-                <div class="step-number">03</div>
-                <h4>ROADMAP</h4>
-                <p>Detailed action plan with clear milestones, resources, and realistic timelines.</p>
+                <div class="step-number">3</div>
+                <h4>Roadmap</h4>
+                <p>Detailed action plan with clear milestones and resource allocation.</p>
             </div>
             <div class="process-step">
-                <div class="step-number">04</div>
-                <h4>BUILD & ITERATE</h4>
-                <p>Hands-on implementation with regular check-ins and optimization as systems come to life.</p>
+                <div class="step-number">4</div>
+                <h4>Execution</h4>
+                <p>Hands-on implementation with ongoing refinement as systems take shape.</p>
             </div>
         </div>
     </section>
 
-    <!-- CTA -->
+    <!-- CTA Section -->
     <section class="cta" id="contact">
-        <div class="cta-bg"></div>
         <div class="cta-content">
-            <h2>READY TO BUILD<br><span>SOMETHING REAL?</span></h2>
-            <p>Book a complimentary 30-minute discovery call. We'll discuss your vision, challenges, and whether HowOps is the right fit.</p>
-            <a href="mailto:contact@HowOpsConsulting.com?subject=Discovery%20Call%20Request" class="cta-btn">
-                Schedule Your Call
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <h2>Ready to Build <span>Real Infrastructure?</span></h2>
+            <p>Schedule a complimentary 30-minute consultation. We'll discuss your operational challenges and whether HowOps is the right fit for your business.</p>
+            <a href="https://calendar.app.google/SnQB3ANFcue1HCEEA" target="_blank" class="cta-btn">
+                Schedule Your Consultation
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
             </a>
@@ -1028,56 +832,28 @@
     <!-- Footer -->
     <footer>
         <img src="https://static.wixstatic.com/media/5e8141_9abd19516af54b5c9b1578f508cbed49~mv2.png" alt="HowOps" class="footer-logo">
-        <p>© 2025 Howard Operations Consulting Group. All rights reserved.</p>
+        <p>&copy; 2025 Howard Operations Consulting Group. All rights reserved.</p>
     </footer>
 
     <script>
-        // Custom Cursor
-        const cursor = document.querySelector('.cursor');
-        const cursorDot = document.querySelector('.cursor-dot');
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            cursorDot.style.left = e.clientX + 'px';
-            cursorDot.style.top = e.clientY + 'px';
-        });
-
-        document.querySelectorAll('a, button').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-        });
-
-        // Scroll animations
+        // Subtle scroll animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+            entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
                 }
             });
         }, observerOptions);
 
         document.querySelectorAll('.stat-item, .service-card, .process-step').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(40px)';
-            el.style.transition = 'all 0.6s ease';
             observer.observe(el);
-        });
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
         });
     </script>
 </body>
