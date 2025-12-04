@@ -45,7 +45,7 @@
             "jobTitle": "Principal Consultant",
             "description": "Operations strategist with a decade leading high-stakes operations in defense contracting, federal law enforcement, and nonprofit leadership. 50+ operational systems built."
         },
-        "serviceType": ["Operations Consulting", "Business Systems Design", "Workflow Automation", "SOP Development"],
+        "serviceType": ["Operations Consulting", "Leadership Coaching", "Business Systems Design", "Workflow Automation", "SOP Development"],
         "areaServed": "United States",
         "priceRange": "$$"
     }
@@ -390,6 +390,278 @@
             font-size: 0.9375rem;
             color: var(--gray-500);
             line-height: 1.5;
+        }
+
+        /* Research Section */
+        .research {
+            padding: 6rem 5%;
+            background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%);
+            position: relative;
+        }
+
+        .research-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .research-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .research-eyebrow {
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .research-title {
+            font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .research-subtitle {
+            font-size: 1.125rem;
+            color: var(--gray-500);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .research-card {
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .research-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-4px);
+        }
+
+        .research-stat {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 0.75rem;
+        }
+
+        .research-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .research-card p {
+            font-size: 0.9375rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+
+        .research-source {
+            font-size: 0.8125rem;
+            color: var(--gray-600);
+            font-style: italic;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 5%;
+            background: var(--navy-light);
+        }
+
+        .services-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .services-eyebrow {
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .services-title {
+            font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .service-icon svg {
+            width: 32px;
+            height: 32px;
+            color: var(--navy);
+        }
+
+        .service-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.375rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            font-size: 0.9375rem;
+            color: var(--gray-500);
+            line-height: 1.7;
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.02) 100%);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .newsletter-container {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .newsletter-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .newsletter-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--navy);
+        }
+
+        .newsletter-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+        }
+
+        .newsletter-subtitle {
+            font-size: 1.0625rem;
+            color: var(--gray-500);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem 1.25rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 4px;
+            color: var(--white);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-input::placeholder {
+            color: var(--gray-500);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .newsletter-btn {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--navy);
+            padding: 1rem 1.75rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .newsletter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .newsletter-privacy {
+            font-size: 0.8125rem;
+            color: var(--gray-600);
+            margin-top: 1rem;
         }
 
         /* Stats Section */
@@ -1167,6 +1439,16 @@
                 grid-template-columns: 1fr;
             }
 
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
             .example-grid {
                 grid-template-columns: 1fr;
             }
@@ -1212,6 +1494,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .newsletter-form {
+                flex-direction: column;
+            }
+
             .testimonial-card {
                 padding: 2rem 1.5rem;
             }
@@ -1237,7 +1523,9 @@
             .pain-card,
             .framework-step,
             .process-step,
-            .example-card {
+            .example-card,
+            .research-card,
+            .service-card {
                 opacity: 0;
                 transform: translateY(20px);
                 transition: opacity 0.5s ease, transform 0.5s ease;
@@ -1246,7 +1534,9 @@
             .pain-card.visible,
             .framework-step.visible,
             .process-step.visible,
-            .example-card.visible {
+            .example-card.visible,
+            .research-card.visible,
+            .service-card.visible {
                 opacity: 1;
                 transform: translateY(0);
             }
@@ -1258,9 +1548,9 @@
     <nav>
         <a href="#" class="logo">HowOps</a>
         <div class="nav-links">
+            <a href="#services">Services</a>
             <a href="#framework">The Framework</a>
             <a href="#about">About</a>
-            <a href="#process">How It Works</a>
             <a href="https://calendar.app.google/SnQB3ANFcue1HCEEA" target="_blank" class="nav-cta">Book a Call</a>
         </div>
     </nav>
@@ -1310,6 +1600,86 @@
                 <div class="who-example">
                     <strong>Creative Freelancers</strong>
                     <span>Doing the work you love, then drowning in invoices, contracts, and admin</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section class="research">
+        <div class="research-container">
+            <div class="research-header">
+                <p class="research-eyebrow">The Data Doesn't Lie</p>
+                <h2 class="research-title">Why operations make or break your business</h2>
+                <p class="research-subtitle">This isn't theory. It's what the research shows—and what I've seen firsthand across 50+ businesses.</p>
+            </div>
+            <div class="research-grid">
+                <div class="research-card">
+                    <div class="research-stat">82%</div>
+                    <h3>of small businesses fail due to cash flow problems</h3>
+                    <p>Poor invoicing, late follow-ups, and manual billing processes directly cause cash flow gaps that kill otherwise healthy businesses.</p>
+                    <span class="research-source">— U.S. Bank Study</span>
+                </div>
+                <div class="research-card">
+                    <div class="research-stat">20-30%</div>
+                    <h3>of revenue lost annually to operational inefficiency</h3>
+                    <p>Businesses without documented systems lose nearly a third of potential revenue to rework, errors, and duplicated effort.</p>
+                    <span class="research-source">— IDC Research</span>
+                </div>
+                <div class="research-card">
+                    <div class="research-stat">78%</div>
+                    <h3>of leads go to the first business that responds</h3>
+                    <p>Speed-to-lead isn't a nice-to-have—it's the single biggest factor in winning new business. Automation makes this possible.</p>
+                    <span class="research-source">— Harvard Business Review</span>
+                </div>
+                <div class="research-card">
+                    <div class="research-stat">96%</div>
+                    <h3>of businesses plateau without systems</h3>
+                    <p>Only 4% of companies break past the $1M mark without documented processes. The ceiling isn't talent—it's infrastructure.</p>
+                    <span class="research-source">— E-Myth Research</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="services-container">
+            <div class="services-header">
+                <p class="services-eyebrow">What We Do</p>
+                <h2 class="services-title">Strategic services for growing businesses</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        </svg>
+                    </div>
+                    <h3>Operations Consulting</h3>
+                    <p>End-to-end operational transformation. We audit your current systems, identify profit leaks, and build infrastructure that scales with you.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h3>Leadership Coaching</h3>
+                    <p>Develop the leadership skills to manage growth, build teams, and make data-driven decisions. Move from operator to strategic leader.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Systems Implementation</h3>
+                    <p>Hands-on buildout of your operational infrastructure. SOPs, automations, dashboards, and workflows—installed and running in 30 days.</p>
                 </div>
             </div>
         </div>
@@ -1581,6 +1951,25 @@
         </div>
     </section>
 
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="newsletter-container">
+            <div class="newsletter-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+            </div>
+            <h2 class="newsletter-title">Weekly Operations Intel</h2>
+            <p class="newsletter-subtitle">Get actionable tips, tools, and strategies to streamline your business delivered every Tuesday. Join 500+ solopreneurs who refuse to stay stuck.</p>
+            <form class="newsletter-form" action="https://formspree.io/f/your-form-id" method="POST">
+                <input type="email" name="email" class="newsletter-input" placeholder="Enter your email" required>
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+            <p class="newsletter-privacy">No spam. Unsubscribe anytime. Your inbox, your rules.</p>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta" id="contact">
         <div class="cta-container">
@@ -1619,7 +2008,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.pain-card, .framework-step, .process-step, .example-card').forEach(el => {
+        document.querySelectorAll('.pain-card, .framework-step, .process-step, .example-card, .research-card, .service-card').forEach(el => {
             observer.observe(el);
         });
     </script>
