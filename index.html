@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HowOps | Operational Excellence for Growing Businesses</title>
-    <meta name="description" content="Strategic operations consulting for consultants and small businesses. We build systems that scale.">
+    <title>HowOps | Operational Systems That Scale Your Business</title>
+    <meta name="description" content="Strategic operations consulting for consultants and small businesses. We design and implement systems that actually work.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,13 +13,14 @@
             --black: #0a0a0a;
             --dark: #111111;
             --charcoal: #1a1a1a;
-            --gray-900: #222222;
-            --gray-800: #333333;
+            --gray-800: #2a2a2a;
             --gray-600: #666666;
             --gray-400: #999999;
+            --gray-200: #cccccc;
             --silver: #C0C0C0;
             --silver-light: #E8E8E8;
             --white: #ffffff;
+            --accent: #4A90A4;
         }
 
         * {
@@ -47,23 +48,23 @@
             left: 0;
             right: 0;
             z-index: 100;
-            padding: 1.5rem 5%;
+            padding: 1.25rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
         }
 
         .logo {
-            height: 40px;
+            height: 38px;
             filter: brightness(0) invert(1);
         }
 
         .nav-links {
             display: flex;
-            gap: 3rem;
+            gap: 2.5rem;
             align-items: center;
         }
 
@@ -72,7 +73,6 @@
             text-decoration: none;
             font-size: 0.875rem;
             font-weight: 500;
-            letter-spacing: 0.02em;
             transition: color 0.3s ease;
         }
 
@@ -83,21 +83,23 @@
         .nav-cta {
             background: var(--white);
             color: var(--black) !important;
-            padding: 0.75rem 1.75rem;
+            padding: 0.75rem 1.5rem;
             font-weight: 600;
             transition: all 0.3s ease;
         }
 
         .nav-cta:hover {
             background: var(--silver-light);
+            transform: translateY(-1px);
         }
 
         /* Hero Section */
         .hero {
             min-height: 100vh;
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             align-items: center;
-            padding: 8rem 5% 6rem;
+            padding: 7rem 5% 4rem;
             position: relative;
             overflow: hidden;
         }
@@ -105,43 +107,42 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            right: 0;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(135deg, transparent 0%, rgba(192, 192, 192, 0.03) 100%);
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(192, 192, 192, 0.04) 0%, transparent 60%);
             pointer-events: none;
         }
 
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6rem;
-            align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
         .hero-content {
-            max-width: 600px;
+            max-width: 580px;
+            position: relative;
+            z-index: 2;
         }
 
         .hero-tag {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
             font-size: 0.75rem;
             font-weight: 600;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--silver);
             margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--silver);
+        }
+
+        .hero-tag::before {
+            content: '';
+            width: 24px;
+            height: 1px;
+            background: var(--silver);
         }
 
         .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2.75rem, 5vw, 4.5rem);
             font-weight: 500;
             line-height: 1.1;
             margin-bottom: 1.5rem;
@@ -152,144 +153,289 @@
             color: var(--silver);
         }
 
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray-200);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
         .hero-description {
-            font-size: 1.125rem;
+            font-size: 1.0625rem;
             color: var(--gray-400);
             margin-bottom: 2.5rem;
             line-height: 1.8;
         }
 
-        .hero-cta {
+        .hero-cta-group {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
             background: var(--white);
             color: var(--black);
             padding: 1rem 2rem;
-            font-size: 0.875rem;
+            font-size: 0.9375rem;
             font-weight: 600;
-            letter-spacing: 0.05em;
             text-decoration: none;
             transition: all 0.3s ease;
         }
 
-        .hero-cta:hover {
+        .btn-primary:hover {
             background: var(--silver-light);
             transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        .hero-cta svg {
-            width: 16px;
-            height: 16px;
+        .btn-primary svg {
+            width: 18px;
+            height: 18px;
             transition: transform 0.3s ease;
         }
 
-        .hero-cta:hover svg {
+        .btn-primary:hover svg {
             transform: translateX(4px);
         }
 
-        .hero-image {
+        .btn-secondary {
+            color: var(--gray-400);
+            font-size: 0.9375rem;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 1rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            color: var(--white);
+        }
+
+        .hero-image-container {
             position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .hero-image img {
-            width: 100%;
+        .hero-image-wrapper {
+            position: relative;
             max-width: 480px;
-            filter: grayscale(100%);
-            border: 1px solid rgba(255,255,255,0.1);
         }
 
-        .hero-image::before {
+        .hero-image-wrapper::before {
             content: '';
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: -20px;
             right: -20px;
-            bottom: -20px;
-            border: 1px solid var(--silver);
-            opacity: 0.3;
+            width: 100%;
+            height: 100%;
+            border: 1px solid rgba(192, 192, 192, 0.2);
             z-index: -1;
         }
 
-        /* Stats Bar */
-        .stats-bar {
-            background: var(--dark);
-            border-top: 1px solid rgba(255,255,255,0.05);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+        .hero-image-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            width: 60%;
+            height: 60%;
+            background: linear-gradient(135deg, rgba(192, 192, 192, 0.1) 0%, transparent 60%);
+            z-index: -1;
         }
 
-        .stats-grid {
+        .hero-image {
+            width: 100%;
+            display: block;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Value Props */
+        .value-props {
+            background: var(--dark);
+            padding: 4rem 5%;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .value-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        .stat-item {
-            padding: 3rem 2rem;
+        .value-item {
             text-align: center;
-            border-right: 1px solid rgba(255,255,255,0.05);
+            padding: 1.5rem;
         }
 
-        .stat-item:last-child {
-            border-right: none;
-        }
-
-        .stat-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 500;
+        .value-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(192, 192, 192, 0.3);
             color: var(--silver);
+        }
+
+        .value-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .value-item h3 {
+            font-size: 1rem;
+            font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
-        .stat-label {
+        .value-item p {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        /* Problem/Solution Section */
+        .problem-solution {
+            padding: 8rem 5%;
+            background: var(--black);
+        }
+
+        .ps-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .ps-card {
+            padding: 3rem;
+            border: 1px solid rgba(255,255,255,0.08);
+            position: relative;
+        }
+
+        .ps-card.problem {
+            background: linear-gradient(135deg, rgba(100,100,100,0.05) 0%, transparent 100%);
+        }
+
+        .ps-card.solution {
+            background: linear-gradient(135deg, rgba(192,192,192,0.08) 0%, transparent 100%);
+            border-color: rgba(192, 192, 192, 0.2);
+        }
+
+        .ps-label {
             font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.15em;
+            font-weight: 600;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--gray-600);
+            margin-bottom: 1rem;
+        }
+
+        .ps-card.solution .ps-label {
+            color: var(--silver);
+        }
+
+        .ps-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 500;
+            margin-bottom: 1.25rem;
+        }
+
+        .ps-card p {
+            color: var(--gray-400);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .ps-list {
+            list-style: none;
+        }
+
+        .ps-list li {
+            padding: 0.5rem 0;
+            font-size: 0.9375rem;
+            color: var(--gray-400);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .ps-list li::before {
+            content: '×';
+            color: var(--gray-600);
+            font-weight: 300;
+            font-size: 1.25rem;
+            line-height: 1.2;
+        }
+
+        .ps-card.solution .ps-list li::before {
+            content: '→';
+            color: var(--silver);
         }
 
         /* About Section */
         .about {
             padding: 8rem 5%;
-            background: var(--black);
+            background: var(--charcoal);
         }
 
         .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 6rem;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 5rem;
             align-items: center;
-            max-width: 1400px;
+            max-width: 1300px;
             margin: 0 auto;
         }
 
-        .about-image {
+        .about-image-wrapper {
             position: relative;
         }
 
-        .about-image img {
+        .about-image {
             width: 100%;
-            max-width: 450px;
-            filter: grayscale(100%);
+            max-width: 420px;
         }
 
-        .about-image::after {
-            content: '';
+        .about-stats {
             position: absolute;
-            bottom: -15px;
-            right: -15px;
-            width: 60%;
-            height: 60%;
-            border: 1px solid var(--silver);
-            opacity: 0.2;
-            z-index: -1;
+            bottom: -30px;
+            right: -30px;
+            background: var(--dark);
+            padding: 1.5rem 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .about-stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--silver);
+            line-height: 1;
+        }
+
+        .about-stat-label {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.25rem;
         }
 
         .about-content {
-            max-width: 560px;
+            max-width: 520px;
         }
 
         .section-tag {
@@ -304,7 +450,7 @@
 
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(2rem, 4vw, 2.75rem);
             font-weight: 500;
             margin-bottom: 1.5rem;
             line-height: 1.2;
@@ -333,7 +479,7 @@
         .credential {
             font-size: 0.75rem;
             font-weight: 500;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.03em;
             color: var(--gray-600);
             padding: 0.5rem 1rem;
             border: 1px solid rgba(255,255,255,0.1);
@@ -348,51 +494,68 @@
         /* Services Section */
         .services {
             padding: 8rem 5%;
-            background: var(--charcoal);
+            background: var(--black);
         }
 
         .services-header {
             text-align: center;
             max-width: 600px;
-            margin: 0 auto 5rem;
+            margin: 0 auto 4rem;
         }
 
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 1400px;
+            gap: 1.5rem;
+            max-width: 1300px;
             margin: 0 auto;
         }
 
         .service-card {
             background: var(--dark);
-            padding: 3rem 2.5rem;
-            border: 1px solid rgba(255,255,255,0.05);
+            padding: 2.5rem;
+            border: 1px solid rgba(255,255,255,0.06);
             transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--silver), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
         .service-card:hover {
-            border-color: rgba(192, 192, 192, 0.3);
-            transform: translateY(-5px);
+            border-color: rgba(192, 192, 192, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
         }
 
         .service-number {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--silver);
-            opacity: 0.2;
-            margin-bottom: 1.5rem;
+            opacity: 0.15;
+            margin-bottom: 1rem;
         }
 
         .service-card h3 {
-            font-size: 1.25rem;
+            font-size: 1.125rem;
             font-weight: 600;
-            margin-bottom: 1rem;
-            letter-spacing: 0.02em;
+            margin-bottom: 0.75rem;
         }
 
-        .service-card p {
+        .service-card > p {
             font-size: 0.9375rem;
             color: var(--gray-400);
             margin-bottom: 1.5rem;
@@ -404,7 +567,7 @@
         }
 
         .service-list li {
-            padding: 0.625rem 0;
+            padding: 0.5rem 0;
             font-size: 0.875rem;
             color: var(--gray-600);
             border-top: 1px solid rgba(255,255,255,0.05);
@@ -416,91 +579,99 @@
         .service-list li::before {
             content: '—';
             color: var(--silver);
-            font-weight: 300;
+            opacity: 0.5;
         }
 
         /* Process Section */
         .process {
             padding: 8rem 5%;
-            background: var(--black);
+            background: var(--charcoal);
         }
 
         .process-header {
             text-align: center;
             max-width: 600px;
-            margin: 0 auto 5rem;
+            margin: 0 auto 4rem;
         }
 
         .process-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            max-width: 1400px;
+            gap: 0;
+            max-width: 1200px;
             margin: 0 auto;
-            position: relative;
-        }
-
-        .process-grid::before {
-            content: '';
-            position: absolute;
-            top: 2rem;
-            left: 12.5%;
-            right: 12.5%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--silver), var(--silver), transparent);
-            opacity: 0.2;
         }
 
         .process-step {
+            padding: 2rem;
             text-align: center;
-            padding: 0 1.5rem;
+            position: relative;
+            border-right: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .process-step:last-child {
+            border-right: none;
         }
 
         .step-number {
-            width: 48px;
-            height: 48px;
+            width: 56px;
+            height: 56px;
             border: 1px solid var(--silver);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
+            margin: 0 auto 1.25rem;
             font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             color: var(--silver);
-            background: var(--black);
-            position: relative;
-            z-index: 1;
+            background: var(--charcoal);
         }
 
         .process-step h4 {
             font-size: 1rem;
             font-weight: 600;
             margin-bottom: 0.75rem;
-            letter-spacing: 0.02em;
         }
 
         .process-step p {
             font-size: 0.875rem;
             color: var(--gray-600);
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
         /* CTA Section */
         .cta {
             padding: 10rem 5%;
-            background: linear-gradient(180deg, var(--charcoal) 0%, var(--black) 100%);
+            background: var(--black);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(192, 192, 192, 0.06) 0%, transparent 60%);
+            pointer-events: none;
         }
 
         .cta-content {
-            max-width: 700px;
+            max-width: 650px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         .cta h2 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-size: clamp(2rem, 5vw, 3rem);
             font-weight: 500;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             line-height: 1.2;
         }
 
@@ -524,7 +695,6 @@
             padding: 1.125rem 2.5rem;
             font-size: 0.9375rem;
             font-weight: 600;
-            letter-spacing: 0.03em;
             text-decoration: none;
             transition: all 0.3s ease;
         }
@@ -532,6 +702,7 @@
         .cta-btn:hover {
             background: var(--silver-light);
             transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
         .cta-email {
@@ -549,8 +720,8 @@
 
         /* Footer */
         footer {
-            padding: 3rem 5%;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 2.5rem 5%;
+            border-top: 1px solid rgba(255,255,255,0.06);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -559,9 +730,9 @@
         }
 
         .footer-logo {
-            height: 32px;
+            height: 28px;
             filter: brightness(0) invert(1);
-            opacity: 0.7;
+            opacity: 0.6;
         }
 
         footer p {
@@ -571,27 +742,52 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .hero-grid,
-            .about-grid {
+            .hero {
                 grid-template-columns: 1fr;
                 gap: 4rem;
-            }
-
-            .hero-image {
-                order: -1;
                 text-align: center;
             }
 
-            .hero-image img {
-                max-width: 400px;
+            .hero-content {
+                max-width: 100%;
             }
 
-            .stats-grid {
+            .hero-tag {
+                justify-content: center;
+            }
+
+            .hero-cta-group {
+                justify-content: center;
+            }
+
+            .hero-image-container {
+                order: -1;
+            }
+
+            .hero-image-wrapper {
+                max-width: 380px;
+            }
+
+            .value-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .stat-item:nth-child(2) {
-                border-right: none;
+            .ps-grid,
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-image-wrapper {
+                text-align: center;
+            }
+
+            .about-stats {
+                position: relative;
+                bottom: auto;
+                right: auto;
+                display: inline-block;
+                margin-top: 1.5rem;
             }
 
             .services-grid {
@@ -601,11 +797,19 @@
 
             .process-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 3rem;
             }
 
-            .process-grid::before {
-                display: none;
+            .process-step {
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.06);
+            }
+
+            .process-step:nth-child(2) {
+                border-right: none;
+            }
+
+            .process-step:nth-last-child(-n+2) {
+                border-bottom: none;
             }
         }
 
@@ -614,30 +818,29 @@
                 padding: 1rem 5%;
             }
 
-            .nav-links {
+            .nav-links a:not(.nav-cta) {
                 display: none;
             }
 
             .hero {
-                padding: 7rem 5% 4rem;
+                padding: 6rem 5% 3rem;
             }
 
-            .stats-grid {
+            .value-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .stat-item {
-                border-right: none;
-                border-bottom: 1px solid rgba(255,255,255,0.05);
-                padding: 2rem;
-            }
-
-            .stat-item:last-child {
-                border-bottom: none;
             }
 
             .process-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .process-step {
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.06);
+            }
+
+            .process-step:last-child {
+                border-bottom: none;
             }
 
             footer {
@@ -647,19 +850,21 @@
             }
         }
 
-        /* Subtle animations */
+        /* Animations */
         @media (prefers-reduced-motion: no-preference) {
             .service-card,
-            .stat-item,
-            .process-step {
+            .value-item,
+            .process-step,
+            .ps-card {
                 opacity: 0;
                 transform: translateY(20px);
                 transition: opacity 0.6s ease, transform 0.6s ease;
             }
 
             .service-card.visible,
-            .stat-item.visible,
-            .process-step.visible {
+            .value-item.visible,
+            .process-step.visible,
+            .ps-card.visible {
                 opacity: 1;
                 transform: translateY(0);
             }
@@ -674,48 +879,100 @@
             <a href="#about">About</a>
             <a href="#services">Services</a>
             <a href="#process">Process</a>
-            <a href="https://calendar.app.google/SnQB3ANFcue1HCEEA" target="_blank" class="nav-cta">Schedule a Call</a>
+            <a href="https://calendar.app.google/SnQB3ANFcue1HCEEA" target="_blank" class="nav-cta">Book a Call</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-grid">
-            <div class="hero-content">
-                <span class="hero-tag">Operations Consulting</span>
-                <h1 class="hero-title">Strategy Meets <span>Structure</span></h1>
-                <p class="hero-description">We build operational systems that scale. For consultants and business owners who are done with chaos and ready for infrastructure that works.</p>
-                <a href="https://calendar.app.google/SnQB3ANFcue1HCEEA" target="_blank" class="hero-cta">
-                    Schedule Your Consultation
+        <div class="hero-content">
+            <span class="hero-tag">Operations Consulting</span>
+            <h1 class="hero-title">We Build Systems That <span>Scale</span> Your Business</h1>
+            <p class="hero-subtitle">Strategy. Structure. Execution.</p>
+            <p class="hero-description">Stop firefighting. Start operating. We design and implement the operational infrastructure consultants and small businesses need to grow without the chaos.</p>
+            <div class="hero-cta-group">
+                <a href="https://calendar.app.google/SnQB3ANFcue1HCEEA" target="_blank" class="btn-primary">
+                    Schedule a Consultation
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
                 </a>
+                <a href="#services" class="btn-secondary">See How We Help</a>
             </div>
-            <div class="hero-image">
-                <img src="https://static.wixstatic.com/media/5e8141_487cbeb5c7204034a4c5f39e37f8202b~mv2.jpg" alt="Andra Howard - Operations Consultant">
+        </div>
+        <div class="hero-image-container">
+            <div class="hero-image-wrapper">
+                <img src="https://static.wixstatic.com/media/5e8141_487cbeb5c7204034a4c5f39e37f8202b~mv2.jpg" alt="Andra Howard - Operations Consultant" class="hero-image">
             </div>
         </div>
     </section>
 
-    <!-- Stats Bar -->
-    <section class="stats-bar">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-number">8+</div>
-                <div class="stat-label">Years Experience</div>
+    <!-- Value Props -->
+    <section class="value-props">
+        <div class="value-grid">
+            <div class="value-item">
+                <div class="value-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h3>Custom Systems</h3>
+                <p>No templates. Infrastructure designed for your specific business.</p>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">50+</div>
-                <div class="stat-label">Systems Built</div>
+            <div class="value-item">
+                <div class="value-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                </div>
+                <h3>Hands-On Execution</h3>
+                <p>We don't just advise. We build and implement alongside you.</p>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Custom Solutions</div>
+            <div class="value-item">
+                <div class="value-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                    </svg>
+                </div>
+                <h3>Built to Scale</h3>
+                <p>Systems that grow with you, not ones you'll outgrow.</p>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">24/7</div>
-                <div class="stat-label">Ongoing Support</div>
+            <div class="value-item">
+                <div class="value-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h3>Ongoing Support</h3>
+                <p>Continued optimization as your business evolves.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem/Solution -->
+    <section class="problem-solution">
+        <div class="ps-grid">
+            <div class="ps-card problem">
+                <div class="ps-label">The Problem</div>
+                <h3>Growth Without Structure is Chaos</h3>
+                <p>You're successful, but you're also overwhelmed. Every day feels like putting out fires instead of building something sustainable.</p>
+                <ul class="ps-list">
+                    <li>Inconsistent processes that rely on your memory</li>
+                    <li>Team confusion about roles and responsibilities</li>
+                    <li>Revenue growing but margins shrinking</li>
+                    <li>Working more hours with less to show for it</li>
+                </ul>
+            </div>
+            <div class="ps-card solution">
+                <div class="ps-label">The Solution</div>
+                <h3>Operational Infrastructure That Works</h3>
+                <p>Real systems. Real structure. Built specifically for how you work and where you want to go.</p>
+                <ul class="ps-list">
+                    <li>Documented processes that run without you</li>
+                    <li>Clear workflows and accountability</li>
+                    <li>Scalable operations that protect margins</li>
+                    <li>Your time back for strategy and growth</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -723,14 +980,18 @@
     <!-- About Section -->
     <section class="about" id="about">
         <div class="about-grid">
-            <div class="about-image">
-                <img src="https://static.wixstatic.com/media/5e8141_487cbeb5c7204034a4c5f39e37f8202b~mv2.jpg" alt="Andra Howard">
+            <div class="about-image-wrapper">
+                <img src="https://static.wixstatic.com/media/5e8141_487cbeb5c7204034a4c5f39e37f8202b~mv2.jpg" alt="Andra Howard" class="about-image">
+                <div class="about-stats">
+                    <div class="about-stat-number">8+</div>
+                    <div class="about-stat-label">Years in Operations</div>
+                </div>
             </div>
             <div class="about-content">
                 <span class="section-tag">Principal Consultant</span>
                 <h2 class="section-title">Andra <span>Howard</span>, MA</h2>
-                <p>HowOps was founded on a simple premise: sustainable growth requires systems, not chaos. With over eight years leading operations across defense contracting, federal law enforcement, and nonprofit management, I've seen what works—and what doesn't.</p>
-                <p>This isn't templated consulting. It's a strategic partnership built on understanding your business first, then designing infrastructure that aligns with your capacity, goals, and vision for growth.</p>
+                <p>I've spent over eight years building and leading operations across defense contracting, federal law enforcement, and nonprofit management. I've seen what happens when organizations try to scale without systems—and I've built the infrastructure that turns chaos into clarity.</p>
+                <p>HowOps isn't about cookie-cutter solutions. It's about understanding your business, your goals, and your constraints—then designing operational infrastructure that actually fits.</p>
                 <div class="credentials">
                     <span class="credential">M.A. Organizational Communication</span>
                     <span class="credential">EdD Candidate, USC</span>
@@ -745,17 +1006,17 @@
     <section class="services" id="services">
         <div class="services-header">
             <span class="section-tag">Services</span>
-            <h2 class="section-title">What We <span>Deliver</span></h2>
+            <h2 class="section-title">How We <span>Help</span></h2>
         </div>
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-number">01</div>
                 <h3>Strategy Mapping</h3>
-                <p>Comprehensive analysis of your business model, operational gaps, and growth opportunities.</p>
+                <p>Deep analysis of where you are, where you want to go, and what's standing in the way.</p>
                 <ul class="service-list">
                     <li>Business model analysis</li>
-                    <li>Gap identification</li>
-                    <li>90-day action plan</li>
+                    <li>Operational gap assessment</li>
+                    <li>90-day action roadmap</li>
                     <li>Priority framework</li>
                 </ul>
             </div>
@@ -764,21 +1025,21 @@
                 <h3>Systems Design</h3>
                 <p>Custom operational infrastructure built to match your workflow and scale with your growth.</p>
                 <ul class="service-list">
-                    <li>Workflow automation</li>
+                    <li>Workflow design</li>
                     <li>SOP development</li>
                     <li>Tech stack optimization</li>
-                    <li>Team structure design</li>
+                    <li>Team structure</li>
                 </ul>
             </div>
             <div class="service-card">
                 <div class="service-number">03</div>
                 <h3>Implementation</h3>
-                <p>Hands-on buildout and integration. We don't just plan—we execute alongside your team.</p>
+                <p>Hands-on execution. We build, test, and refine the systems alongside your team.</p>
                 <ul class="service-list">
-                    <li>Direct implementation</li>
+                    <li>Direct buildout</li>
                     <li>Team training</li>
-                    <li>Ongoing optimization</li>
                     <li>Performance tracking</li>
+                    <li>Ongoing optimization</li>
                 </ul>
             </div>
         </div>
@@ -794,22 +1055,22 @@
             <div class="process-step">
                 <div class="step-number">1</div>
                 <h4>Discovery</h4>
-                <p>30-minute consultation to understand your challenges and determine fit.</p>
+                <p>30-minute call to understand your challenges and see if we're the right fit.</p>
             </div>
             <div class="process-step">
                 <div class="step-number">2</div>
                 <h4>Assessment</h4>
-                <p>Deep analysis of current operations, identifying quick wins and long-term opportunities.</p>
+                <p>Deep dive into your current operations to identify gaps and opportunities.</p>
             </div>
             <div class="process-step">
                 <div class="step-number">3</div>
                 <h4>Roadmap</h4>
-                <p>Detailed action plan with clear milestones and resource allocation.</p>
+                <p>Detailed action plan with clear milestones and deliverables.</p>
             </div>
             <div class="process-step">
                 <div class="step-number">4</div>
                 <h4>Execution</h4>
-                <p>Hands-on implementation with ongoing refinement as systems take shape.</p>
+                <p>Hands-on implementation with regular check-ins and refinement.</p>
             </div>
         </div>
     </section>
@@ -817,11 +1078,11 @@
     <!-- CTA Section -->
     <section class="cta" id="contact">
         <div class="cta-content">
-            <h2>Ready to Build <span>Real Infrastructure?</span></h2>
-            <p>Schedule a complimentary 30-minute consultation. We'll discuss your operational challenges and whether HowOps is the right fit for your business.</p>
+            <h2>Ready to Build <span>Real Systems?</span></h2>
+            <p>Book a complimentary 30-minute consultation. We'll discuss your operational challenges and whether HowOps is the right fit for your business.</p>
             <a href="https://calendar.app.google/SnQB3ANFcue1HCEEA" target="_blank" class="cta-btn">
-                Schedule Your Consultation
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                Schedule Your Call
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
             </a>
@@ -836,10 +1097,10 @@
     </footer>
 
     <script>
-        // Subtle scroll animations
+        // Scroll animations
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: '0px 0px -40px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -847,12 +1108,12 @@
                 if (entry.isIntersecting) {
                     setTimeout(() => {
                         entry.target.classList.add('visible');
-                    }, index * 100);
+                    }, index * 80);
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.stat-item, .service-card, .process-step').forEach(el => {
+        document.querySelectorAll('.value-item, .service-card, .process-step, .ps-card').forEach(el => {
             observer.observe(el);
         });
     </script>
