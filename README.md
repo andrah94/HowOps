@@ -21,9 +21,13 @@ The prior repository's app skeleton remains in subdirectories but does not serve
 
 ## Scroll experience
 
-The homepage uses one sticky scene that follows a route from the business vision through operational friction, implementation, and a documented client outcome. The process labels are links, and the booking link stays in the header. JavaScript enables the scroll scene. With JavaScript disabled, reduced motion enabled, or a short phone viewport, the four beats appear as ordinary readable sections. The narrated introduction requires a user click and has a text transcript.
+The opening is a continuous perspective scene rendered with native Canvas 2D. Scroll progress first organizes loose inputs, then advances a camera through capture, connection, and delivery frames into an actual image from the ABLE HQ launch film. The scene illustrates a workflow; it is not a live product interface. It uses no scroll interception, animation libraries, or WebGL dependency.
 
-The HowOps brand film plays once, muted, in the opening scene and can be replayed. Its final wordmark remains visible when it stops. The architectural system poster appears as scrolling advances into the route and blueprint. Both HQ films are click-to-play; the ABLE launch video has English WebVTT captions. The optional 22-second narration uses ElevenLabs' Chris O. stock voice and includes a text transcript.
+The chapter links jump directly to each point in the journey. The HQ, expertise, founder, and booking routes are always available. The home link explicitly returns to the document top. Reduced motion, the visible motion control, short viewports, and unavailable canvas use a normal readable document. With JavaScript disabled, the video links open the media directly.
+
+The supplied HowOps brand film plays once, muted, when motion is enabled; its final wordmark remains visible. It can be paused or replayed. The ABLE launch opens in a keyboard-accessible dialog with native controls and English captions. The optional 22-second narration uses ElevenLabs' Chris O. stock voice, requires a click, and includes a transcript. Audio is paused when the page is hidden.
+
+Native details elements expose the three service descriptions. The HQ section distinguishes HowOps (company), HQ (product), and the ABLE / WISE builds without adding unsupported results or WISE feature claims.
 
 ## Release
 
