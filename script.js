@@ -51,7 +51,7 @@ function segment(a, b, color, lineWidth = 1) {
   if (!pa || !pb) return;
   ctx.beginPath(); ctx.moveTo(pa.x,pa.y); ctx.lineTo(pb.x,pb.y); ctx.strokeStyle=color; ctx.lineWidth=lineWidth; ctx.stroke();
 }
-function worldLabel(text, point, alpha, size = 16, color = '213,225,220') {
+function worldLabel(text, point, alpha, size = 16, color = '203,210,220') {
   const p = project(point); if (!p || alpha < .01 || p.x < -400 || p.x > width + 400 || p.y < -150 || p.y > height + 150) return;
   const nearFade = smooth(250, 650, p.depth) * (1-smooth(1150,2200,p.depth));
   ctx.fillStyle=`rgba(${color},${alpha * nearFade})`;
@@ -78,23 +78,23 @@ function plane(points, fill) {
 function drawWorkUnit(x,z,index,alpha) {
   const p=project({x,y:0,z});if(!p||p.depth>2200)return;
   alpha*=smooth(300,650,p.depth)*(1-smooth(1600,2600,p.depth));
-  const line=`rgba(192,215,207,${alpha*.65})`,gold=`rgba(220,190,149,${alpha})`;
+  const line=`rgba(203,210,220,${alpha*.65})`,signal=`rgba(99,139,255,${alpha})`;
   // An open document becomes an assigned action, then a delivered outcome.
   const left=x-95,top=-90;
-  plane([{x:left-18,y:top-18,z},{x:left+220,y:top-18,z},{x:left+220,y:top+175,z},{x:left-18,y:top+175,z}],`rgba(101,150,146,${alpha*.045})`);
+  plane([{x:left-18,y:top-18,z},{x:left+220,y:top-18,z},{x:left+220,y:top+175,z},{x:left-18,y:top+175,z}],`rgba(151,174,220,${alpha*.045})`);
   if(index===0){
     segment({x:left,y:top,z},{x:left+155,y:top,z},line,1.2);
     segment({x:left,y:top,z},{x:left,y:top+108,z},line,1.2);
-    for(let i=0;i<3;i++)segment({x:left+22,y:top+30+i*24,z},{x:left+120-i*15,y:top+30+i*24,z},i?line:gold,1.5);
+    for(let i=0;i<3;i++)segment({x:left+22,y:top+30+i*24,z},{x:left+120-i*15,y:top+30+i*24,z},i?line:signal,1.5);
   }else if(index===1){
     segment({x:left,y:top+5,z},{x:left+70,y:top+45,z},line,1.5);
     segment({x:left,y:top+85,z},{x:left+70,y:top+45,z},line,1.5);
-    segment({x:left+70,y:top+45,z},{x:left+165,y:top+45,z},gold,2);
-    segment({x:left+145,y:top+30,z},{x:left+165,y:top+45,z},gold,1.5);
-    segment({x:left+145,y:top+60,z},{x:left+165,y:top+45,z},gold,1.5);
+    segment({x:left+70,y:top+45,z},{x:left+165,y:top+45,z},signal,2);
+    segment({x:left+145,y:top+30,z},{x:left+165,y:top+45,z},signal,1.5);
+    segment({x:left+145,y:top+60,z},{x:left+165,y:top+45,z},signal,1.5);
   }else{
-    segment({x:left+20,y:top+50,z},{x:left+65,y:top+90,z},gold,2.5);
-    segment({x:left+65,y:top+90,z},{x:left+155,y:top+5,z},gold,2.5);
+    segment({x:left+20,y:top+50,z},{x:left+65,y:top+90,z},signal,2.5);
+    segment({x:left+65,y:top+90,z},{x:left+155,y:top+5,z},signal,2.5);
   }
   worldLabel(['Request received','Owner assigned','Ready to deliver'][index],{x:left,y:top+145,z},alpha,24);
 }
@@ -113,12 +113,12 @@ function drawWorld(p) {
   for (const x of [-wide,-wide*.5,0,wide*.5,wide]) {
     for(let z=-1300;z<5300;z+=200) {
       const opacity = atmosphere * (x===0?.16:.10);
-      segment({x:routeX(z)+x,y:245,z},{x:routeX(z+200)+x,y:245,z:z+200},`rgba(169,202,200,${opacity})`,.7);
+      segment({x:routeX(z)+x,y:245,z},{x:routeX(z+200)+x,y:245,z:z+200},`rgba(203,210,220,${opacity})`,.7);
     }
   }
   for (let z=-1000;z<5300;z+=420) {
     const alpha=atmosphere*.1;
-    segment({x:routeX(z)-wide,y:245,z},{x:routeX(z)+wide,y:245,z},`rgba(172,201,199,${alpha})`,.65);
+    segment({x:routeX(z)-wide,y:245,z},{x:routeX(z)+wide,y:245,z},`rgba(203,210,220,${alpha})`,.65);
   }
   // The loose inputs occupy the same world; scrolling brings them onto the route.
   for(const input of [...inputs].sort((a,b)=>b.z-a.z)) {
@@ -128,9 +128,9 @@ function drawWorld(p) {
     const point=project({x,y,z:input.z});
     if(point){
       const a=opacity*smooth(80,400,point.depth);
-      segment({x,y:y+20,z:input.z},{x:x+190,y:y+20,z:input.z},`rgba(198,218,211,${a*.4})`,.8);
+      segment({x,y:y+20,z:input.z},{x:x+190,y:y+20,z:input.z},`rgba(203,210,220,${a*.4})`,.8);
       worldLabel(input.text,{x,y,z:input.z},a,23);
-      ctx.fillStyle=`rgba(207,185,154,${a})`;ctx.fillRect(point.x-12,point.y-5,3,3);
+      ctx.fillStyle=`rgba(99,139,255,${a})`;ctx.fillRect(point.x-12,point.y-5,3,3);
     }
   }
   // Open frames assemble, then pass around the viewer rather than being swapped.
@@ -142,16 +142,16 @@ function drawWorld(p) {
     const spread=(1-assembly)*170;
     const corners=[{x:gx-half-spread,y:-tall-spread,z:gate.z},{x:gx+half+spread,y:-tall,z:gate.z},{x:gx+half,y:tall+spread,z:gate.z},{x:gx-half,y:tall,z:gate.z}];
     const cap=.38+assembly*.62;
-    plane([corners[0],corners[3],{...corners[3],z:gate.z+120},{...corners[0],z:gate.z+120}],`rgba(142,187,181,${fade*.075})`);
-    plane([corners[0],corners[1],{...corners[1],z:gate.z+90},{...corners[0],z:gate.z+90}],`rgba(185,199,182,${fade*.045})`);
+    plane([corners[0],corners[3],{...corners[3],z:gate.z+120},{...corners[0],z:gate.z+120}],`rgba(151,174,220,${fade*.075})`);
+    plane([corners[0],corners[1],{...corners[1],z:gate.z+90},{...corners[0],z:gate.z+90}],`rgba(151,174,220,${fade*.045})`);
     for(let j=0;j<4;j++){
       const a=corners[j],b=corners[(j+1)%4];
-      segment(a,{x:lerp(a.x,b.x,cap),y:lerp(a.y,b.y,cap),z:b.z},`rgba(160,191,188,${fade*.72})`,1);
-      segment({...a,z:a.z+60},{...b,z:b.z+60},`rgba(142,183,180,${fade*.16})`,.65);
-      segment(a,{...a,z:a.z+60},`rgba(203,220,207,${fade*.24})`,.7);
+      segment(a,{x:lerp(a.x,b.x,cap),y:lerp(a.y,b.y,cap),z:b.z},`rgba(203,210,220,${fade*.72})`,1);
+      segment({...a,z:a.z+60},{...b,z:b.z+60},`rgba(203,210,220,${fade*.16})`,.65);
+      segment(a,{...a,z:a.z+60},`rgba(203,210,220,${fade*.24})`,.7);
     }
-    segment({x:gx-half,y:tall,z:gate.z},{x:gx-half,y:lerp(tall,-tall,assembly),z:gate.z},`rgba(218,191,152,${fade*.78})`,1.5);
-    worldLabel(`0${i+1} / ${gate.title}`,{x:gx-half+26,y:-tall+48,z:gate.z},fade*smooth(.1,.23,p),21,'222,207,184');
+    segment({x:gx-half,y:tall,z:gate.z},{x:gx-half,y:lerp(tall,-tall,assembly),z:gate.z},`rgba(99,139,255,${fade*.78})`,1.5);
+    worldLabel(`0${i+1} / ${gate.title}`,{x:gx-half+26,y:-tall+48,z:gate.z},fade*smooth(.1,.23,p),21,'203,210,220');
     worldLabel(gate.detail,{x:gx-half+26,y:tall-35,z:gate.z},fade*smooth(.1,.23,p)*.8,16);
     drawWorkUnit(gx,gate.z+80,i,fade*assembly);
   }
@@ -160,15 +160,15 @@ function drawWorld(p) {
   const routeEnd=lerp(-400,4700,smooth(.14,.62,p));
   for(let z=-1400;z<routeEnd;z+=45){
     const next=Math.min(z+45,routeEnd);
-    segment({x:routeX(z),y:230,z},{x:routeX(next),y:230,z:next},`rgba(203,180,146,${routeAlpha*.68})`,phone?1.3:1.7);
-    segment({x:routeX(z)+9,y:230,z},{x:routeX(next)+9,y:230,z:next},`rgba(140,196,194,${routeAlpha*.22})`,3);
+    segment({x:routeX(z),y:230,z},{x:routeX(next),y:230,z:next},`rgba(99,139,255,${routeAlpha*.68})`,phone?1.3:1.7);
+    segment({x:routeX(z)+9,y:230,z},{x:routeX(next)+9,y:230,z:next},`rgba(99,139,255,${routeAlpha*.22})`,3);
   }
   for(let i=0;i<5;i++){
     const z=-700+i*940+p*1350;
     const q=project({x:routeX(z),y:230,z});
     if(!q)continue;
     const a=routeAlpha*smooth(90,420,q.depth);const size=clamp(q.scale*7,2,12);
-    ctx.shadowColor='rgba(221,197,159,.55)';ctx.shadowBlur=16;ctx.fillStyle=`rgba(238,216,183,${a})`;ctx.fillRect(q.x-size/2,q.y-size/2,size,size);ctx.shadowBlur=0;
+    ctx.shadowColor='rgba(99,139,255,.55)';ctx.shadowBlur=16;ctx.fillStyle=`rgba(190,209,255,${a})`;ctx.fillRect(q.x-size/2,q.y-size/2,size,size);ctx.shadowBlur=0;
   }
 }
 function sceneOpacity(index,p) {
