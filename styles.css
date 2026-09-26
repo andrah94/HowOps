@@ -1,4 +1,4 @@
-:root{--dark:#101c20;--deep:#0c1518;--paper:#e9e7df;--white:#f0efe9;--muted:#a8b7b9;--accent:#cfb99a;--line:rgba(206,221,220,.2);--nav-h:78px;color-scheme:dark}
+:root{--dark:#101c20;--deep:#0c1518;--paper:#ffffff;--white:#ffffff;--muted:#a8b7b9;--accent:#cfb99a;--line:rgba(206,221,220,.2);--nav-h:78px;color-scheme:dark}
 *{box-sizing:border-box}
 html{scroll-behavior:auto;overflow-x:clip}
 body{margin:0;background:var(--dark);color:var(--white);font:400 16px/1.6 'DM Sans',sans-serif;-webkit-font-smoothing:antialiased}
@@ -19,3 +19,5 @@ button,a,input{touch-action:manipulation}button{font:inherit;color:inherit;curso
 @media(max-width:360px){.header-inner{gap:12px;padding-inline:16px}.header-cta{gap:12px}.is-immersive .brand-film{height:180px}.is-immersive .journey-intro h1{font-size:34px}.intro-description{font-size:13px}.is-immersive .journey-intro{padding-bottom:100px}.is-immersive .chapter h2,.is-immersive .chapter-hq h2{font-size:35px}.is-immersive .chapter>p:last-of-type{font-size:13px}.chapter .eyebrow{font-size:8px}.is-immersive .hq-portal{top:66%}.portal-image{aspect-ratio:1.8}.section-heading h2{font-size:38px}.founder-copy h2{font-size:62px}.founder-credentials{gap:16px}.closing-section h2{font-size:65px}.service-name{font-size:21px}}
 @media(max-height:740px) and (max-width:760px){.is-immersive .brand-film{height:165px}.is-immersive .journey-intro{padding-top:0;padding-bottom:96px}.is-immersive .journey-intro h1{font-size:33px}.is-immersive .intro-description{font-size:13px;margin:14px auto 18px}.intro-actions{gap:12px}.film-control{margin-top:4px}.is-immersive .chapter h2{font-size:36px}.is-immersive .chapter{top:5%}.is-immersive .hq-portal{top:65%}.portal-top,.portal-bottom{padding-block:9px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}.work-film:hover img,.button:hover{transform:none}}
+
+.work-film-player{width:100%;height:min(64svh,620px);object-fit:contain;background:#070d0f}.film-play-button{display:flex;align-items:center;gap:14px;min-height:48px;padding:10px 16px;background:#fff;color:var(--deep);border:0;font-size:13px}.film-status{font-size:12px;color:var(--muted);min-height:20px;margin-top:12px}.film-fallback{font-size:12px;text-decoration:underline}.film-dialog .film-status{text-align:center}

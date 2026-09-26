@@ -268,9 +268,36 @@ const audio=$('#howops-audio'), audioButton=$('.audio-button');
 function updateAudio(){const duration=Number.isFinite(audio.duration)?audio.duration:22;const left=Math.max(0,Math.ceil(duration-audio.currentTime));$('.audio-time').textContent=`0:${String(left).padStart(2,'0')}`;$('.audio-progress span').style.width=`${clamp(audio.currentTime/duration)*100}%`;$('.audio-icon').textContent=audio.paused?'▷':'Ⅱ';audioButton.setAttribute('aria-label',`${audio.paused?'Play':'Pause'} the 22-second HowOps introduction`);}
 audioButton.addEventListener('click',()=>{if(audio.paused)audio.play().catch(()=>{});else audio.pause();});
 ['play','pause','timeupdate','loadedmetadata'].forEach(event=>audio.addEventListener(event,updateAudio));audio.addEventListener('ended',()=>{audio.currentTime=0;updateAudio();});
-const dialog=$('.film-dialog'),ableFilm=$('#able-film');
-$$('[data-film="able"]').forEach(button=>button.addEventListener('click',e=>{e.preventDefault();audio.pause();resetBrand();dialog.showModal();document.body.classList.add('film-open');ableFilm.play().catch(()=>{});}));
+const dialog=$('.film-dialog'),ableFilm=$('#able-film'),inlineFilm=$('#able-inline');
+const filmButton=$('.film-play-button'),filmLabel=$('.film-play-label');
+const filmPlayers=[inlineFilm,ableFilm];
+function filmStatus(video,message,failed=false){
+  const parent=video===inlineFilm?$('.work-film'):dialog;
+  parent.querySelector('.film-status').textContent=message;
+  parent.querySelector('.film-fallback').hidden=!failed;
+}
+function startFilm(video){
+  audio.pause();resetBrand();
+  filmPlayers.forEach(other=>{if(other!==video)other.pause();});
+  filmStatus(video,'Loading film…');
+  video.play().catch(error=>{
+    if(error.name==='AbortError')return;
+    filmStatus(video,'Tap the video’s play control, or open the film directly.',true);
+  });
+}
+filmPlayers.forEach(video=>{
+  video.addEventListener('playing',()=>{
+    audio.pause();resetBrand();filmPlayers.forEach(other=>{if(other!==video)other.pause();});
+    filmStatus(video,'');
+  });
+  video.addEventListener('waiting',()=>filmStatus(video,'Loading film…'));
+  video.addEventListener('error',()=>filmStatus(video,'The film couldn’t load. Open it directly to try again.',true));
+});
+function updateFilmButton(){filmLabel.textContent=inlineFilm.ended?'Replay film':inlineFilm.paused?'Play film':'Pause film';filmButton.lastElementChild.textContent=inlineFilm.paused?'▷':'Ⅱ';}
+['play','pause','ended'].forEach(event=>inlineFilm.addEventListener(event,updateFilmButton));
+filmButton.addEventListener('click',()=>{if(inlineFilm.paused)startFilm(inlineFilm);else inlineFilm.pause();});
+$$('[data-film="able"]').forEach(button=>button.addEventListener('click',e=>{e.preventDefault();dialog.showModal();document.body.classList.add('film-open');startFilm(ableFilm);}));
 $('.close-film').addEventListener('click',()=>dialog.close());
 dialog.addEventListener('close',()=>{ableFilm.pause();document.body.classList.remove('film-open');});
 dialog.addEventListener('click',e=>{const r=dialog.getBoundingClientRect();if(e.target===dialog&&(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom))dialog.close();});
-document.addEventListener('visibilitychange',()=>{if(document.hidden){audio.pause();ableFilm.pause();resetBrand();}});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){audio.pause();filmPlayers.forEach(video=>video.pause());resetBrand();}});
