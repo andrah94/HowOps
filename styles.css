@@ -21,3 +21,53 @@ button,a,input{touch-action:manipulation}button{font:inherit;color:inherit;curso
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}.work-film:hover img,.button:hover{transform:none}}
 
 .work-film-player{width:100%;height:min(64svh,620px);object-fit:contain;background:#090f1d}.film-play-button{display:flex;align-items:center;gap:14px;min-height:48px;padding:10px 16px;background:#fff;color:var(--deep);border:0;font-size:13px}.film-status{font-size:12px;color:var(--muted);min-height:20px;margin-top:12px}.film-fallback{font-size:12px;text-decoration:underline}.film-dialog .film-status{text-align:center}
+
+/* Readable typography: stronger strokes, open spacing, useful small-text sizes. */
+body{font-weight:450;-webkit-font-smoothing:auto}
+h1,h2,h3{font-weight:600;letter-spacing:-.035em}
+.wordmark{font-weight:550;letter-spacing:-.06em}
+.button,.header-cta,.quiet-link,.film-play-button,.audio-button{font-weight:600}
+.desktop-nav{font-size:14px;font-weight:500}
+.header-cta{font-size:14px}
+.eyebrow{font-size:12px;font-weight:500;letter-spacing:.1em;color:#a7bcff}
+.intro-description,.chapter>p:last-of-type,.hq-description>p:not(.lead),.hq-builds p{font-weight:450}
+.film-control{font-size:12px;font-weight:500;color:#cbd2dc}
+.journey-index{font-size:13px;font-weight:500}
+.journey-index a span,.journey-meta{font-size:10px}
+.journey-meta{color:#bcc9df}
+.service-name{font-weight:550}
+.service-name small{font-size:15px}
+.service-number{font-size:12px}
+.service-detail span,.build-number{font-size:11px}
+.founder-credentials{font-size:12px}
+.founder-credentials strong{font-weight:600}
+.founder-image figcaption,.work-film-caption small{font-size:11px}
+.audio-transcript{font-size:13px}
+.audio-transcript p{font-size:14px}
+.audio-time,.client-quote footer{font-size:12px}
+.site-footer>a:nth-child(2){font-size:14px}
+.site-footer>span{font-size:11px}
+@media(max-width:1000px) and (min-width:761px){.desktop-nav{font-size:12px;gap:18px}}
+@media(max-width:760px){
+.header-cta{font-size:13px}
+.is-immersive .journey-intro>.eyebrow,.chapter .eyebrow,.section-heading .eyebrow,.founder-copy>.eyebrow{font-size:10px;letter-spacing:.09em}
+.intro-description,.is-immersive .intro-description{font-size:15px}
+.is-immersive .chapter>p:last-of-type{font-size:15px}
+.intro-actions .quiet-link,.is-immersive .chapter-hq .quiet-link{font-size:14px}
+.film-control{font-size:11px}
+.journey-index{font-size:12px}
+.journey-index a span{font-size:10px}
+.journey-meta{font-size:9px}
+.hq-description>p:not(.lead),.hq-builds p,.service-detail,.founder-copy>p:not(.lead):not(.eyebrow){font-size:15px}
+.service-name small{font-size:14px}
+.service-number{font-size:11px}
+.founder-credentials{font-size:11px;gap:22px}
+.client-quote footer{font-size:12px}
+.site-footer>span{font-size:10px}
+}
+@media(max-width:360px){
+.is-immersive .journey-intro>.eyebrow{font-size:9px}
+.intro-description,.is-immersive .intro-description{font-size:14px}
+.founder-credentials{font-size:10px;gap:16px}
+.journey-index{font-size:11px}
+}

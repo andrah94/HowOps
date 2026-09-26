@@ -55,7 +55,7 @@ function worldLabel(text, point, alpha, size = 16, color = '203,210,220') {
   const p = project(point); if (!p || alpha < .01 || p.x < -400 || p.x > width + 400 || p.y < -150 || p.y > height + 150) return;
   const nearFade = smooth(250, 650, p.depth) * (1-smooth(1150,2200,p.depth));
   ctx.fillStyle=`rgba(${color},${alpha * nearFade})`;
-  ctx.font=`400 ${clamp(size * p.scale, 9, width < 760 ? 25 : 38)}px "DM Sans",sans-serif`;
+  ctx.font=`500 ${clamp(size * p.scale, 10, width < 760 ? 25 : 38)}px "DM Sans",sans-serif`;
   ctx.fillText(text,p.x,p.y);
 }
 const gates = [
