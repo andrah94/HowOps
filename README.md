@@ -35,10 +35,10 @@ GitHub Pages uses the default branch. Review the homepage at common phone and de
 
 ## Inquiries, pricing, and policies
 
-The native HTML inquiry form submits to the connected Jotform account: https://form.jotform.com/262687308828067. Responses are stored there. Owner editor: https://www.jotform.com/build/262687308828067. New-submission notifications are enabled for contact@howopsconsulting.com. Responses are also available in Jotform; inbox delivery is not independently verified.
+The native HTML inquiry form submits to the connected Jotform account: https://form.jotform.com/262687308828067. Responses are stored there. Owner editor: https://www.jotform.com/build/262687308828067. New-submission notifications are enabled for contact@howopsconsulting.com. Responses are also available in Jotform; inbox delivery is not independently verified. Browser test submissions were accepted and stored. The confirmation page has a tested Return to HowOps link.
 
 The site offers custom-quoted audits, scoped projects, and monthly retainers. Prices and delivery ranges have not been supplied; no amounts or durations are invented. Timing is agreed during scoping.
 
-Privacy and website terms live at `privacy.html` and `terms.html`, describing the actual hosted form, Google fonts/calendar, and preview/production hosting. Before merging production, update the form’s privacy link and thank-you redirect to the production privacy.html and thanks.html pages and confirm operational practices remain accurate.
+Privacy and website terms live at `privacy.html` and `terms.html`, describing the actual hosted form, Google fonts/calendar, and preview/production hosting. Before merging production, update the form’s privacy link and thank-you return link to the production privacy.html and thanks.html pages and confirm operational practices remain accurate.
 
 Verified public founder social link: https://linkedin.com/in/andrabh/ (linked from ABLE’s founder page). No additional social accounts are assumed.
