@@ -180,7 +180,7 @@ function sceneOpacity(index,p) {
 function resetBrand() { brandVideo.pause();brandVideo.style.opacity='0';filmControl.innerHTML='Replay brand film <span aria-hidden="true">↗</span>';filmControl.setAttribute('aria-label','Replay the HowOps brand film'); }
 function playBrand() { brandVideo.currentTime=0;brandVideo.play().catch(resetBrand); }
 brandVideo.addEventListener('playing',()=>{brandVideo.style.opacity='1';filmControl.innerHTML='Pause brand film <span aria-hidden="true">Ⅱ</span>';filmControl.setAttribute('aria-label','Pause the HowOps brand film');});
-brandVideo.addEventListener('ended',resetBrand);brandVideo.addEventListener('error',resetBrand);
+brandVideo.addEventListener('error',resetBrand);
 filmControl.addEventListener('click',()=>{if(brandVideo.paused)playBrand();else resetBrand();});
 function applyScene(p) {
   const active=p<.155?0:p<.41?1:p<.73?2:3;

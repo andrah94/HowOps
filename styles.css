@@ -71,3 +71,5 @@ h1,h2,h3{font-weight:600;letter-spacing:-.035em}
 .founder-credentials{font-size:10px;gap:16px}
 .journey-index{font-size:11px}
 }
+
+.founder-suffix{font-size:.35em;letter-spacing:-.02em;white-space:nowrap;font-weight:550}
