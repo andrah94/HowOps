@@ -177,7 +177,7 @@ function sceneOpacity(index,p) {
   if(index===2)return smooth(.42,.49,p)*(1-smooth(.66,.72,p));
   return smooth(.74,.82,p);
 }
-function resetBrand() { brandVideo.pause();brandVideo.style.opacity='0';filmControl.innerHTML='Replay brand film <span aria-hidden="true">↗</span>';filmControl.setAttribute('aria-label','Replay the HowOps brand film'); }
+function resetBrand() { brandVideo.pause();brandVideo.style.opacity='0';filmControl.innerHTML='Replay brand film';filmControl.setAttribute('aria-label','Replay the HowOps brand film'); }
 function playBrand() { brandVideo.currentTime=0;brandVideo.play().catch(resetBrand); }
 brandVideo.addEventListener('playing',()=>{brandVideo.style.opacity='1';filmControl.innerHTML='Pause brand film <span aria-hidden="true">Ⅱ</span>';filmControl.setAttribute('aria-label','Pause the HowOps brand film');});
 brandVideo.addEventListener('error',resetBrand);
