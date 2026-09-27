@@ -42,3 +42,7 @@ The site offers custom-quoted audits, scoped projects, and monthly retainers. Pr
 Privacy and website terms live at `privacy.html` and `terms.html`, describing the actual hosted form, Google fonts/calendar, and preview/production hosting. Before merging production, update the form’s privacy link and thank-you return link to the production privacy.html and thanks.html pages and confirm operational practices remain accurate.
 
 Verified public founder social link: https://linkedin.com/in/andrabh/ (linked from ABLE’s founder page). No additional social accounts are assumed.
+
+## ABLE HQ story
+
+The ABLE HQ case study uses Andra’s confirmed context: a small team, volunteers, and fragmented work. It connects that need to the visible product capabilities without inventing time savings, growth metrics, or client quotes. The relationship disclosure identifies Andra as founder of both HowOps and ABLE.
