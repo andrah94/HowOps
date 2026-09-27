@@ -269,35 +269,67 @@ function updateAudio(){const duration=Number.isFinite(audio.duration)?audio.dura
 audioButton.addEventListener('click',()=>{if(audio.paused)audio.play().catch(()=>{});else audio.pause();});
 ['play','pause','timeupdate','loadedmetadata'].forEach(event=>audio.addEventListener(event,updateAudio));audio.addEventListener('ended',()=>{audio.currentTime=0;updateAudio();});
 const dialog=$('.film-dialog'),ableFilm=$('#able-film'),inlineFilm=$('#able-inline');
-const filmButton=$('.film-play-button'),filmLabel=$('.film-play-label');
+const filmButton=$('.film-play-button'),previewToggle=$('.preview-toggle');
 const filmPlayers=[inlineFilm,ableFilm];
+let previewVisible=false,previewPaused=false,closingFilm=false,closeTimer;
+inlineFilm.controls=false;inlineFilm.muted=true;
+$('.film-preview-open').hidden=false;previewToggle.hidden=false;
+// The silent preview never starts audio or competes with the brand narration.
+for(const track of inlineFilm.textTracks)track.mode='disabled';
 function filmStatus(video,message,failed=false){
   const parent=video===inlineFilm?$('.work-film'):dialog;
   parent.querySelector('.film-status').textContent=message;
   parent.querySelector('.film-fallback').hidden=!failed;
 }
-function startFilm(video){
-  audio.pause();resetBrand();
-  filmPlayers.forEach(other=>{if(other!==video)other.pause();});
-  filmStatus(video,'Loading film…');
-  video.play().catch(error=>{
-    if(error.name==='AbortError')return;
-    filmStatus(video,'Tap the video’s play control, or open the film directly.',true);
-  });
+function syncPreview(){
+  const motionAllowed=motionChoice??!reducedMotion.matches;
+  if(previewVisible&&!previewPaused&&motionAllowed&&!document.hidden&&!dialog.open){
+    inlineFilm.play().catch(()=>{previewToggle.textContent='Play silent preview';});
+  }else inlineFilm.pause();
+}
+function updatePreviewControl(){previewToggle.textContent=inlineFilm.paused?'Play silent preview':'Pause silent preview';}
+['playing','pause'].forEach(event=>inlineFilm.addEventListener(event,updatePreviewControl));
+previewToggle.addEventListener('click',()=>{
+  if(inlineFilm.paused){previewPaused=false;inlineFilm.play().catch(()=>filmStatus(inlineFilm,'Use Watch film to play the video.',true));}
+  else{previewPaused=true;inlineFilm.pause();}
+});
+new IntersectionObserver(entries=>{previewVisible=entries[0].isIntersecting;syncPreview();},{threshold:.2}).observe(inlineFilm);
+reducedMotion.addEventListener('change',syncPreview);motionButton.addEventListener('click',syncPreview);
+function openFilm(trigger){
+  if(dialog.open)return;
+  const origin=trigger?.closest('.work-film')?inlineFilm:trigger;
+  const from=origin?.getBoundingClientRect();
+  inlineFilm.pause();audio.pause();resetBrand();
+  closingFilm=false;dialog.classList.remove('is-closing');
+  dialog.classList.toggle('quiet-theater',!(motionChoice??!reducedMotion.matches));
+  dialog.showModal();document.body.classList.add('film-open');
+  ableFilm.currentTime=0;ableFilm.muted=false;
+  if(!dialog.classList.contains('quiet-theater')&&from&&from.width&&from.height){
+    const to=dialog.getBoundingClientRect();
+    const x=from.left+from.width/2-(to.left+to.width/2),y=from.top+from.height/2-(to.top+to.height/2);
+    const scale=Math.max(.35,Math.min(.9,from.width/to.width));
+    dialog.animate([{transform:`translate(${x}px,${y}px) scale(${scale})`,opacity:.35},{transform:'translate(0,0) scale(1)',opacity:1}],{duration:700,easing:'cubic-bezier(.16,1,.3,1)'});
+  }
+  filmStatus(ableFilm,'Loading film…');
+  ableFilm.play().catch(error=>{if(error.name!=='AbortError')filmStatus(ableFilm,'Tap the video’s play control, or open the film directly.',true);});
+}
+function closeFilm(){
+  if(!dialog.open||closingFilm)return;
+  closingFilm=true;ableFilm.pause();dialog.classList.add('is-closing');
+  closeTimer=setTimeout(()=>dialog.close(),dialog.classList.contains('quiet-theater')?0:350);
 }
 filmPlayers.forEach(video=>{
   video.addEventListener('playing',()=>{
-    audio.pause();resetBrand();filmPlayers.forEach(other=>{if(other!==video)other.pause();});
+    if(video===ableFilm){audio.pause();resetBrand();inlineFilm.pause();}
     filmStatus(video,'');
   });
-  video.addEventListener('waiting',()=>filmStatus(video,'Loading film…'));
+  video.addEventListener('waiting',()=>{if(video===ableFilm)filmStatus(video,'Loading film…');});
   video.addEventListener('error',()=>filmStatus(video,'The film couldn’t load. Open it directly to try again.',true));
 });
-function updateFilmButton(){filmLabel.textContent=inlineFilm.ended?'Replay film':inlineFilm.paused?'Play film':'Pause film';filmButton.lastElementChild.textContent=inlineFilm.paused?'▷':'Ⅱ';}
-['play','pause','ended'].forEach(event=>inlineFilm.addEventListener(event,updateFilmButton));
-filmButton.addEventListener('click',()=>{if(inlineFilm.paused)startFilm(inlineFilm);else inlineFilm.pause();});
-$$('[data-film="able"]').forEach(button=>button.addEventListener('click',e=>{e.preventDefault();dialog.showModal();document.body.classList.add('film-open');startFilm(ableFilm);}));
-$('.close-film').addEventListener('click',()=>dialog.close());
-dialog.addEventListener('close',()=>{ableFilm.pause();document.body.classList.remove('film-open');});
-dialog.addEventListener('click',e=>{const r=dialog.getBoundingClientRect();if(e.target===dialog&&(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom))dialog.close();});
-document.addEventListener('visibilitychange',()=>{if(document.hidden){audio.pause();filmPlayers.forEach(video=>video.pause());resetBrand();}});
+filmButton.addEventListener('click',()=>openFilm(filmButton));
+$$('[data-film="able"]').forEach(button=>button.addEventListener('click',e=>{e.preventDefault();openFilm(button);}));
+$('.close-film').addEventListener('click',closeFilm);
+dialog.addEventListener('cancel',e=>{e.preventDefault();closeFilm();});
+dialog.addEventListener('close',()=>{clearTimeout(closeTimer);ableFilm.pause();document.body.classList.remove('film-open');dialog.classList.remove('is-closing');closingFilm=false;syncPreview();});
+dialog.addEventListener('click',e=>{const r=dialog.getBoundingClientRect();if(e.target===dialog&&(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom))closeFilm();});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){audio.pause();filmPlayers.forEach(video=>video.pause());resetBrand();}else syncPreview();});
